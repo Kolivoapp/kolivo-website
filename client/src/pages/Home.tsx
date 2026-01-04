@@ -264,24 +264,40 @@ export default function Home() {
             
             {/* Right - HALO Visual */}
             <div className="relative flex items-center justify-center">
-              <div className="absolute w-80 h-80 bg-gradient-to-br from-[#4ade80]/20 to-[#22d3ee]/20 rounded-full blur-3xl" />
-              <div className="relative bg-card rounded-3xl p-8 shadow-2xl border border-border/50">
-                <img 
-                  src="/images/halo-logo-gradient.jpg" 
-                  alt="HALO by KOLIVO™" 
-                  className="w-full max-w-sm mx-auto"
-                />
-                <div className="mt-6 flex items-center justify-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg">
+              <div className="absolute w-96 h-96 bg-gradient-to-br from-[#4ade80]/20 to-[#22d3ee]/20 rounded-full blur-3xl" />
+              <div className="relative bg-card rounded-3xl p-10 shadow-2xl border border-border/50">
+                {/* HALO ID Card - Clean Design */}
+                <div className="flex items-center gap-6">
+                  <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-xl ring-4 ring-gradient-to-br from-[#4ade80] to-[#22d3ee]" style={{background: 'linear-gradient(135deg, #4ade80, #22d3ee)', padding: '3px'}}>
                     <img 
                       src="/images/halo-avatar.png" 
                       alt="HALO Avatar" 
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover rounded-xl"
                     />
                   </div>
                   <div className="text-left">
-                    <p className="font-semibold text-foreground">Your HALO ID</p>
-                    <p className="text-sm text-muted-foreground">Secured by KOLIVO™</p>
+                    <p className="font-display text-2xl font-bold text-foreground">Your HALO ID</p>
+                    <p className="text-base text-muted-foreground mt-1">Secured by KOLIVO™</p>
+                    <div className="flex items-center gap-2 mt-3">
+                      <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                      <span className="text-sm text-green-600 font-medium">Active & Protected</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Security indicators */}
+                <div className="mt-8 pt-6 border-t border-border/50 grid grid-cols-3 gap-4 text-center">
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">256</div>
+                    <div className="text-xs text-muted-foreground">bit encryption</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">100%</div>
+                    <div className="text-xs text-muted-foreground">data control</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">0</div>
+                    <div className="text-xs text-muted-foreground">data sold</div>
                   </div>
                 </div>
               </div>
