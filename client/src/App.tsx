@@ -17,6 +17,7 @@ import SolutionB2B from "./pages/solutions/B2B";
 import SolutionEnterprise from "./pages/solutions/Enterprise";
 import SolutionImpact from "./pages/solutions/Impact";
 import SolutionPublicSector from "./pages/solutions/PublicSector";
+import SolutionColiving from "./pages/solutions/Coliving";
 import SecurityTrust from "./pages/SecurityTrust";
 import Company from "./pages/Company";
 import CompanyCareers from "./pages/CompanyCareers";
@@ -35,6 +36,7 @@ function Router() {
       <Route path="/products/guardo" component={ProductGuardo} />
       <Route path="/products/partenario" component={ProductPartenario} />
       {/* Solutions */}
+      <Route path="/solutions/coliving" component={SolutionColiving} />
       <Route path="/solutions/b2b" component={SolutionB2B} />
       <Route path="/solutions/enterprise" component={SolutionEnterprise} />
       <Route path="/solutions/impact" component={SolutionImpact} />

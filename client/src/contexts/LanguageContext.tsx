@@ -45,6 +45,8 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.impact.desc": "An operating system for your mission",
     "solutions.public.title": "Public Sector",
     "solutions.public.desc": "Accountable, secure digital government",
+    "solutions.coliving.title": "Coliving Management",
+    "solutions.coliving.desc": "The complete platform for shared living",
     
     // Hero
     "hero.tagline": "DIGITAL ECOSYSTEM PLATFORM",
@@ -185,6 +187,8 @@ const translations: Record<Language, Record<string, string>> = {
     "solutions.impact.desc": "Un système d'exploitation pour votre mission",
     "solutions.public.title": "Secteur Public",
     "solutions.public.desc": "Un gouvernement numérique responsable et sécurisé",
+    "solutions.coliving.title": "Gestion colocative",
+    "solutions.coliving.desc": "La plateforme complète pour la vie partagée",
     
     // Hero
     "hero.tagline": "PLATEFORME D'ÉCOSYSTÈME NUMÉRIQUE",

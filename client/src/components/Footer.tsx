@@ -19,6 +19,7 @@ export default function Footer() {
       { name: t("products.partenario.title"), href: "/products/partenario" },
     ],
     solutions: [
+      { name: t("solutions.coliving.title"), href: "/solutions/coliving" },
       { name: t("solutions.b2b.title"), href: "/solutions/b2b" },
       { name: t("solutions.enterprise.title"), href: "/solutions/enterprise" },
       { name: t("solutions.impact.title"), href: "/solutions/impact" },

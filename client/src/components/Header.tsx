@@ -33,6 +33,7 @@ export default function Header() {
   ];
 
   const solutions = [
+    { title: t("solutions.coliving.title"), href: "/solutions/coliving", description: t("solutions.coliving.desc") },
     { title: t("solutions.b2b.title"), href: "/solutions/b2b", description: t("solutions.b2b.desc") },
     { title: t("solutions.enterprise.title"), href: "/solutions/enterprise", description: t("solutions.enterprise.desc") },
     { title: t("solutions.impact.title"), href: "/solutions/impact", description: t("solutions.impact.desc") },
