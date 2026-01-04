@@ -44,15 +44,12 @@ export default function Header() {
       <div className="container">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <img 
               src="/images/kolivo-logo.png" 
               alt="KOLIVO™" 
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
-            <span className="font-display font-semibold text-lg text-foreground hidden sm:block">
-              KOLIVO<sup className="text-xs">™</sup>
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
