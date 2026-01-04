@@ -5,7 +5,7 @@
  */
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Lock, Eye, FileCheck } from "lucide-react";
+import { ArrowRight, Shield, Lock, Eye } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -100,72 +100,13 @@ export default function SecurityTrust() {
         </div>
       </section>
 
-      {/* Compliance Baseline */}
-      <section className="py-20 lg:py-32 bg-muted/30">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="order-2 lg:order-1 bg-card rounded-lg p-8 border border-border">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <FileCheck className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-display text-xl font-semibold">
-                  {language === "fr" ? "Cadre de conformité" : "Compliance Framework"}
-                </h3>
-              </div>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">•</span>
-                  <span>{language === "fr" ? "Contrôles alignés SOC 2 Type II" : "SOC 2 Type II aligned controls"}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">•</span>
-                  <span>{language === "fr" ? "Prêt pour la conformité RGPD et PIPEDA" : "GDPR and PIPEDA compliance ready"}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">•</span>
-                  <span>{language === "fr" ? "Évaluations de sécurité tierces régulières" : "Regular third-party security assessments"}</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-semibold">•</span>
-                  <span>{language === "fr" ? "Surveillance et amélioration continues" : "Continuous monitoring and improvement"}</span>
-                </li>
-              </ul>
-            </div>
-            <div className="order-1 lg:order-2">
-              <p className="text-primary text-sm font-medium uppercase tracking-wider mb-4">
-                {language === "fr" ? "02 — Base de conformité" : "02 — Compliance Baseline"}
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                {language === "fr" 
-                  ? "La conformité comme fondation, pas comme case à cocher" 
-                  : "Compliance as a Foundation, Not a Checkbox"
-                }
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                {language === "fr" 
-                  ? "Nous abordons la conformité non pas comme un fardeau à minimiser, mais comme une discipline qui renforce notre plateforme et gagne la confiance de nos clients."
-                  : "We approach compliance not as a burden to be minimized, but as a discipline that strengthens our platform and earns the trust of our clients."
-                }
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                {language === "fr" 
-                  ? "Notre programme de conformité est construit sur des cadres et normes reconnus, avec des évaluations régulières pour garantir que nous répondons ou dépassons les attentes des clients entreprises et institutionnels."
-                  : "Our compliance program is built on recognized frameworks and standards, with regular assessments to ensure we meet or exceed the expectations of enterprise and institutional clients."
-                }
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Incident Handling */}
       <section className="py-20 lg:py-32 bg-background">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <p className="text-primary text-sm font-medium uppercase tracking-wider mb-4">
-                {language === "fr" ? "03 — Philosophie de gestion des incidents" : "03 — Incident Handling Philosophy"}
+                {language === "fr" ? "02 — Philosophie de gestion des incidents" : "02 — Incident Handling Philosophy"}
               </p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
                 {language === "fr" ? "Transparence dans l'adversité" : "Transparency in Adversity"}

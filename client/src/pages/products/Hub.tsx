@@ -4,8 +4,10 @@
  * Bilingual support (FR/EN)
  * 
  * HUB is a shared living management platform (roommate/colocation app)
+ * CTA: Waitlist signup with CAI-compliant consent
  */
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, 
@@ -20,13 +22,20 @@ import {
   Wrench,
   Heart,
   Shield,
-  Users
+  Users,
+  Bell
 } from "lucide-react";
-import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
+import WaitlistForm from "@/components/WaitlistForm";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function ProductHub() {
   const { language } = useLanguage();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   const content = {
     en: {
@@ -34,7 +43,8 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "The human infrastructure for shared living",
       description: "HUB simplifies managing your shared living with kindness. Finances, tasks, calendar and more, all in one app designed for roommates and co-living communities.",
-      cta: "Request a Demo",
+      cta: "Get Notified at Launch",
+      comingSoon: "Coming Soon",
       overview: {
         tagline: "Overview",
         title: "Everything You Need for Harmonious Shared Living",
@@ -112,9 +122,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Ready to Simplify Your Shared Living?",
-        description: "Join thousands of housemates who have discovered a better way to live together.",
-        button: "Get Started with HUB"
+        title: "Be the First to Experience HUB",
+        description: "Join our waitlist and be notified as soon as HUB by KOLIVO™ launches. Early access for waitlist members.",
+        button: "Join the Waitlist"
       }
     },
     fr: {
@@ -122,7 +132,8 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "L'infrastructure humaine de la vie partagée",
       description: "HUB simplifie la gestion de votre colocation avec bienveillance. Finances, tâches, calendrier et plus encore, dans une seule application conçue pour les colocataires et les communautés de vie partagée.",
-      cta: "Demander une Démo",
+      cta: "Être notifié au lancement",
+      comingSoon: "Bientôt disponible",
       overview: {
         tagline: "Aperçu",
         title: "Tout ce dont vous avez besoin pour une colocation harmonieuse",
@@ -200,9 +211,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Prêt à simplifier votre colocation?",
-        description: "Rejoignez des milliers de colocataires qui ont découvert une meilleure façon de vivre ensemble.",
-        button: "Commencer avec HUB"
+        title: "Soyez les premiers à découvrir HUB",
+        description: "Rejoignez notre liste d'attente et soyez notifié dès le lancement de HUB by KOLIVO™. Accès prioritaire pour les membres de la liste d'attente.",
+        button: "Rejoindre la liste d'attente"
       }
     }
   };
@@ -219,6 +230,10 @@ export default function ProductHub() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332] via-[#1a2332]/80 to-transparent" />
         <div className="container relative z-10">
           <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
+              <Bell className="w-4 h-4" />
+              {t.comingSoon}
+            </div>
             <p className="section-number mb-4">{t.tagline}</p>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               {t.title}
@@ -229,12 +244,17 @@ export default function ProductHub() {
             <p className="text-xl text-white/70 leading-relaxed mb-8">
               {t.description}
             </p>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/contact">
-                {t.cta}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  {t.cta}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-lg">
+                <WaitlistForm onClose={() => setIsWaitlistOpen(false)} variant="modal" />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
@@ -308,7 +328,7 @@ export default function ProductHub() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA with Waitlist Form */}
       <section className="py-20 lg:py-32 bg-navy text-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
@@ -318,12 +338,17 @@ export default function ProductHub() {
             <p className="text-lg text-white/70 mb-8">
               {t.ctaSection.description}
             </p>
-            <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <Link href="/contact">
-                {t.ctaSection.button}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  {t.ctaSection.button}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-lg">
+                <WaitlistForm onClose={() => setIsWaitlistOpen(false)} variant="modal" />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>

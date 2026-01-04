@@ -1,6 +1,7 @@
 /**
  * Language Switch Component
  * Allows users to toggle between French and English
+ * No flags - clean text-only design
  */
 
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -29,13 +30,13 @@ export default function LanguageSwitch() {
           onClick={() => setLanguage("en")}
           className={language === "en" ? "bg-muted" : ""}
         >
-          <span className="mr-2">🇬🇧</span> English
+          English
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setLanguage("fr")}
           className={language === "fr" ? "bg-muted" : ""}
         >
-          <span className="mr-2">🇫🇷</span> Français
+          Français
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
