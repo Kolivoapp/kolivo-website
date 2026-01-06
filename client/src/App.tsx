@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import ProductHub from "./pages/products/Hub";
 import ProductStudioPlus from "./pages/products/StudioPlus";
 import ProductGuardo from "./pages/products/Guardo";
-import ProductPartenario from "./pages/products/Partenario";
 import SolutionB2B from "./pages/solutions/B2B";
 import SolutionEnterprise from "./pages/solutions/Enterprise";
 import SolutionImpact from "./pages/solutions/Impact";
@@ -34,7 +33,6 @@ function Router() {
       <Route path="/products/hub" component={ProductHub} />
       <Route path="/products/studio-plus" component={ProductStudioPlus} />
       <Route path="/products/guardo" component={ProductGuardo} />
-      <Route path="/products/partenario" component={ProductPartenario} />
       {/* Solutions */}
       <Route path="/solutions/coliving" component={SolutionColiving} />
       <Route path="/solutions/b2b" component={SolutionB2B} />

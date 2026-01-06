@@ -16,7 +16,6 @@ export default function Footer() {
       { name: t("products.hub.title"), href: "/products/hub" },
       { name: t("products.studio.title"), href: "/products/studio-plus" },
       { name: t("products.guardo.title"), href: "/products/guardo" },
-      { name: t("products.partenario.title"), href: "/products/partenario" },
     ],
     solutions: [
       { name: t("solutions.coliving.title"), href: "/solutions/coliving" },

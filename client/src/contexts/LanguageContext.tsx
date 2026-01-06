@@ -33,8 +33,6 @@ const translations: Record<Language, Record<string, string>> = {
     "products.studio.desc": "Strategic consulting and delivery practice",
     "products.guardo.title": "GUARDO by KOLIVO™",
     "products.guardo.desc": "Trust, compliance, and incident management portal",
-    "products.partenario.title": "PARTENARIO by KOLIVO™",
-    "products.partenario.desc": "Partner operations and enablement portal",
     
     // Solutions
     "solutions.b2b.title": "B2B Solutions",
@@ -175,8 +173,6 @@ const translations: Record<Language, Record<string, string>> = {
     "products.studio.desc": "Pratique de conseil stratégique et de livraison",
     "products.guardo.title": "GUARDO by KOLIVO™",
     "products.guardo.desc": "Portail de confiance, conformité et gestion des incidents",
-    "products.partenario.title": "PARTENARIO by KOLIVO™",
-    "products.partenario.desc": "Portail d'opérations et d'habilitation des partenaires",
     
     // Solutions
     "solutions.b2b.title": "Solutions B2B",

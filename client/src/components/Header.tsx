@@ -29,7 +29,6 @@ export default function Header() {
     { title: t("products.hub.title"), href: "/products/hub", description: t("products.hub.desc") },
     { title: t("products.studio.title"), href: "/products/studio-plus", description: t("products.studio.desc") },
     { title: t("products.guardo.title"), href: "/products/guardo", description: t("products.guardo.desc") },
-    { title: t("products.partenario.title"), href: "/products/partenario", description: t("products.partenario.desc") },
   ];
 
   const solutions = [

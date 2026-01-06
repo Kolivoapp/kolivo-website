@@ -72,13 +72,6 @@ export default function Home() {
             desc: "Trust, compliance, and incident management",
             href: "/products/guardo",
             primary: false
-          },
-          {
-            icon: Handshake,
-            name: "PARTENARIO by KOLIVO™",
-            desc: "Partner operations portal",
-            href: "/products/partenario",
-            primary: false
           }
         ]
       },
@@ -141,13 +134,6 @@ export default function Home() {
             name: "GUARDO by KOLIVO™",
             desc: "Confiance, conformité et gestion des incidents",
             href: "/products/guardo",
-            primary: false
-          },
-          {
-            icon: Handshake,
-            name: "PARTENARIO by KOLIVO™",
-            desc: "Portail d'opérations partenaires",
-            href: "/products/partenario",
             primary: false
           }
         ]
