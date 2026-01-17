@@ -1,11 +1,11 @@
 /**
- * KOLIVO™ Footer - Liquid Glass Design
- * Clean, minimal, premium
+ * KOLIVO™ Footer
+ * Style: Institutional / Corporate
  */
 
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { CDN } from "@/lib/cdn";
 
 export default function Footer() {
@@ -14,14 +14,14 @@ export default function Footer() {
 
   const content = {
     en: {
-      tagline: "The infrastructure for shared living",
+      description: "Building the infrastructure for shared living.",
       products: "Products",
       company: "Company",
       legal: "Legal",
       hub: "Hub",
       nest: "Nest",
+      seed: "Seed",
       halo: "Halo",
-      vault: "Vault",
       about: "About",
       careers: "Careers",
       contact: "Contact",
@@ -31,17 +31,18 @@ export default function Footer() {
       cookies: "Cookies",
       copyright: `© ${currentYear} KOLIVO™ Technologies Inc.`,
       allRights: "All rights reserved.",
-      corporate: "Corporate"
+      headquarters: "Headquarters",
+      corporate: "Corporate Site"
     },
     fr: {
-      tagline: "L'infrastructure de la vie partagée",
+      description: "Construire l'infrastructure de la vie partagée.",
       products: "Produits",
       company: "Entreprise",
       legal: "Légal",
       hub: "Hub",
       nest: "Nest",
+      seed: "Seed",
       halo: "Halo",
-      vault: "Vault",
       about: "À propos",
       careers: "Carrières",
       contact: "Contact",
@@ -51,126 +52,90 @@ export default function Footer() {
       cookies: "Témoins",
       copyright: `© ${currentYear} KOLIVO™ Technologies Inc.`,
       allRights: "Tous droits réservés.",
-      corporate: "Corporatif"
+      headquarters: "Siège social",
+      corporate: "Site corporatif"
     }
   };
 
   const t = content[language];
 
   return (
-    <footer className="relative border-t border-white/5">
-      {/* Subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background to-transparent pointer-events-none" />
-      
-      <div className="container relative z-10">
-        {/* Main Footer */}
-        <div className="py-16 lg:py-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
-            {/* Brand */}
-            <div className="col-span-2 md:col-span-4 lg:col-span-2">
-              <Link href="/" className="inline-block mb-6">
-                <img 
-                  src={CDN.logos.wordmark.white}
-                  alt="KOLIVO™" 
-                  className="h-7 w-auto opacity-90"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = '/images/kolivo-logo-white.svg';
-                  }}
-                />
-              </Link>
-              <p className="text-foreground/40 text-sm max-w-xs leading-relaxed">
-                {t.tagline}
-              </p>
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-grid">
+          {/* Brand Column */}
+          <div className="col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-block mb-4">
+              <img 
+                src={CDN.logos.wordmark.white}
+                alt="KOLIVO™" 
+                className="h-6 w-auto opacity-80"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </Link>
+            <p className="text-foreground-muted text-sm mb-6 max-w-xs">
+              {t.description}
+            </p>
+            
+            {/* Contact Info */}
+            <div className="space-y-2 text-sm">
+              <div className="flex items-start gap-2 text-foreground-muted">
+                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p>800, rue du Square-Victoria</p>
+                  <p>Suite 2624</p>
+                  <p>Montréal (Québec) H3C 0B4</p>
+                </div>
+              </div>
+              <a 
+                href="mailto:contact@kolivo.ca"
+                className="flex items-center gap-2 text-foreground-muted hover:text-foreground transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                contact@kolivo.ca
+              </a>
             </div>
+          </div>
 
-            {/* Products */}
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-wider text-foreground/30 mb-4">
-                {t.products}
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/products/hub" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.hub}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/nest" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.nest}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/halo" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.halo}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/vault" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.vault}
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* Products */}
+          <div>
+            <h4 className="footer-title">{t.products}</h4>
+            <nav className="space-y-2">
+              <Link href="/products/hub" className="footer-link">{t.hub}</Link>
+              <Link href="/products/nest" className="footer-link">{t.nest}</Link>
+              <Link href="/products/seed" className="footer-link">{t.seed}</Link>
+              <Link href="/products/halo" className="footer-link">{t.halo}</Link>
+            </nav>
+          </div>
 
-            {/* Company */}
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-wider text-foreground/30 mb-4">
-                {t.company}
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/company" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.about}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/company/careers" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.careers}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.contact}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/security-trust" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.trust}
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* Company */}
+          <div>
+            <h4 className="footer-title">{t.company}</h4>
+            <nav className="space-y-2">
+              <Link href="/company" className="footer-link">{t.about}</Link>
+              <Link href="/company/careers" className="footer-link">{t.careers}</Link>
+              <Link href="/contact" className="footer-link">{t.contact}</Link>
+              <Link href="/security-trust" className="footer-link">{t.trust}</Link>
+            </nav>
+          </div>
 
-            {/* Legal */}
-            <div>
-              <h4 className="text-xs font-medium uppercase tracking-wider text-foreground/30 mb-4">
-                {t.legal}
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link href="/legal/privacy" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.privacy}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/legal/terms" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.terms}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/legal/cookies" className="text-sm text-foreground/60 hover:text-foreground transition-colors">
-                    {t.cookies}
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          {/* Legal */}
+          <div>
+            <h4 className="footer-title">{t.legal}</h4>
+            <nav className="space-y-2">
+              <Link href="/legal/privacy" className="footer-link">{t.privacy}</Link>
+              <Link href="/legal/terms" className="footer-link">{t.terms}</Link>
+              <Link href="/legal/cookies" className="footer-link">{t.cookies}</Link>
+            </nav>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-foreground/30">
+        <div className="footer-bottom">
+          <p className="footer-copyright">
             {t.copyright} {t.allRights}
           </p>
           
@@ -178,10 +143,10 @@ export default function Footer() {
             href="https://corporate.kolivo.ca"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-1.5 text-xs text-foreground/30 hover:text-foreground/60 transition-colors"
+            className="flex items-center gap-1 text-sm text-foreground-subtle hover:text-foreground-secondary transition-colors"
           >
             {t.corporate}
-            <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUpRight className="w-3 h-3" />
           </a>
         </div>
       </div>
