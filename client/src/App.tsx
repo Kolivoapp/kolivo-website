@@ -24,11 +24,14 @@ import SolutionColiving from "./pages/solutions/Coliving";
 // Other pages
 import SecurityTrust from "./pages/SecurityTrust";
 import Company from "./pages/Company";
-import CompanyCareers from "./pages/CompanyCareers";
+// CompanyCareers moved to ./pages/company/Careers
 import Contact from "./pages/Contact";
 import LegalPrivacy from "./pages/legal/Privacy";
 import LegalTerms from "./pages/legal/Terms";
 import LegalCookies from "./pages/legal/Cookies";
+import LegalAccessibility from "./pages/legal/Accessibility";
+import CompanyPress from "./pages/company/Press";
+import CompanyCareersNew from "./pages/company/Careers";
 
 function Router() {
   return (
@@ -50,13 +53,15 @@ function Router() {
       <Route path="/security-trust" component={SecurityTrust} />
       {/* Company */}
       <Route path="/company" component={Company} />
-      <Route path="/company/careers" component={CompanyCareers} />
+      <Route path="/company/careers" component={CompanyCareersNew} />
+      <Route path="/company/press" component={CompanyPress} />
       {/* Contact */}
       <Route path="/contact" component={Contact} />
       {/* Legal */}
       <Route path="/legal/privacy" component={LegalPrivacy} />
       <Route path="/legal/terms" component={LegalTerms} />
       <Route path="/legal/cookies" component={LegalCookies} />
+      <Route path="/legal/accessibility" component={LegalAccessibility} />
       {/* Fallback */}
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />

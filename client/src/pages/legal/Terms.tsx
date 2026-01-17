@@ -31,8 +31,8 @@ If you are using our Services on behalf of an organization, you represent and wa
           content: `KOLIVO™ provides technology platforms designed to facilitate collaborative living and organizational management. Our Services include:
 
 • HUB by KOLIVO™ – A platform for shared living management, including expense tracking, task management, and household coordination.
-• Studio+ by KOLIVO™ – Strategic consulting and professional services.
-• GUARDO by KOLIVO™ – Trust, compliance, and incident management services.
+• Nest by KOLIVO™ – Property management for shared residences.
+• Seed by KOLIVO™ – Community project incubator and development platform.
 • HALO by KOLIVO™ – Secure identity and authentication services.
 
 The specific features and functionality of each Service may vary and are subject to change at our discretion.`
@@ -196,8 +196,8 @@ Si vous utilisez nos Services au nom d'une organisation, vous déclarez et garan
           content: `KOLIVO™ fournit des plateformes technologiques conçues pour faciliter la vie collaborative et la gestion organisationnelle. Nos Services comprennent :
 
 • HUB by KOLIVO™ – Une plateforme de gestion de la vie partagée, incluant le suivi des dépenses, la gestion des tâches et la coordination du ménage.
-• Studio+ by KOLIVO™ – Services de conseil stratégique et professionnels.
-• GUARDO by KOLIVO™ – Services de confiance, conformité et gestion des incidents.
+• Nest by KOLIVO™ – Gestion immobilière pour résidences partagées.
+• Seed by KOLIVO™ – Incubateur de projets communautaires et plateforme de développement.
 • HALO by KOLIVO™ – Services d'identité sécurisée et d'authentification.
 
 Les fonctionnalités spécifiques de chaque Service peuvent varier et sont sujettes à modification à notre discrétion.`

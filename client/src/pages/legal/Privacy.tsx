@@ -19,7 +19,7 @@ export default function LegalPrivacy() {
       },
       scope: {
         title: "Scope of This Policy",
-        text: "This Privacy Policy applies to all personal information collected, used, or disclosed by KOLIVO™ Technologies Inc. through our websites (kolivo.ca, corporate.kolivo.ca), our platforms (HUB by KOLIVO™, Studio+ by KOLIVO™, GUARDO by KOLIVO™), and our identity service (HALO by KOLIVO™)."
+        text: "This Privacy Policy applies to all personal information collected, used, or disclosed by KOLIVO™ Technologies Inc. through our websites (kolivo.ca, corporate.kolivo.ca), our platforms (HUB by KOLIVO™, Nest by KOLIVO™, Seed by KOLIVO™), and our identity service (HALO by KOLIVO™)."
       },
       responsiblePerson: {
         title: "Person Responsible for Personal Information Protection",
@@ -155,7 +155,7 @@ export default function LegalPrivacy() {
       },
       scope: {
         title: "Portée de cette politique",
-        text: "Cette politique de confidentialité s'applique à tous les renseignements personnels recueillis, utilisés ou divulgués par KOLIVO™ Technologies Inc. par l'intermédiaire de nos sites Web (kolivo.ca, corporate.kolivo.ca), de nos plateformes (HUB by KOLIVO™, Studio+ by KOLIVO™, GUARDO by KOLIVO™) et de notre service d'identité (HALO by KOLIVO™)."
+        text: "Cette politique de confidentialité s'applique à tous les renseignements personnels recueillis, utilisés ou divulgués par KOLIVO™ Technologies Inc. par l'intermédiaire de nos sites Web (kolivo.ca, corporate.kolivo.ca), de nos plateformes (HUB by KOLIVO™, Nest by KOLIVO™, Seed by KOLIVO™) et de notre service d'identité (HALO by KOLIVO™)."
       },
       responsiblePerson: {
         title: "Personne responsable de la protection des renseignements personnels",

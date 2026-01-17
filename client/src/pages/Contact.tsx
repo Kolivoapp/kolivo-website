@@ -36,7 +36,7 @@ export default function Contact() {
           general: "General Inquiry",
           beta: "Beta Program",
           partnership: "Partnership",
-          consulting: "Studio+ Consulting",
+          consulting: "Enterprise Solutions",
           careers: "Careers",
           other: "Other"
         },
@@ -77,7 +77,7 @@ export default function Contact() {
           general: "Demande générale",
           beta: "Programme bêta",
           partnership: "Partenariat",
-          consulting: "Conseil Studio+",
+          consulting: "Solutions entreprise",
           careers: "Carrières",
           other: "Autre"
         },

@@ -29,10 +29,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Products
     "products.hub.title": "HUB by KOLIVO™",
     "products.hub.desc": "The main application layer for your digital ecosystem",
-    "products.studio.title": "Studio+ by KOLIVO™",
-    "products.studio.desc": "Strategic consulting and delivery practice",
-    "products.guardo.title": "GUARDO by KOLIVO™",
-    "products.guardo.desc": "Trust, compliance, and incident management portal",
+    "products.nest.title": "Nest by KOLIVO™",
+    "products.nest.desc": "Property management for shared residences",
+    "products.seed.title": "Seed by KOLIVO™",
+    "products.seed.desc": "Community project incubator",
+    "products.halo.title": "Halo by KOLIVO™",
+    "products.halo.desc": "Secure digital identity for the ecosystem",
+    "products.lens.title": "Lens by KOLIVO™",
+    "products.lens.desc": "Analytics and insights platform",
     
     // Solutions
     "solutions.b2b.title": "B2B Solutions",
@@ -169,10 +173,14 @@ const translations: Record<Language, Record<string, string>> = {
     // Products
     "products.hub.title": "HUB by KOLIVO™",
     "products.hub.desc": "La couche applicative principale de votre écosystème numérique",
-    "products.studio.title": "Studio+ by KOLIVO™",
-    "products.studio.desc": "Pratique de conseil stratégique et de livraison",
-    "products.guardo.title": "GUARDO by KOLIVO™",
-    "products.guardo.desc": "Portail de confiance, conformité et gestion des incidents",
+    "products.nest.title": "Nest by KOLIVO™",
+    "products.nest.desc": "Gestion immobilière pour résidences partagées",
+    "products.seed.title": "Seed by KOLIVO™",
+    "products.seed.desc": "Incubateur de projets communautaires",
+    "products.halo.title": "Halo by KOLIVO™",
+    "products.halo.desc": "Identité numérique sécurisée pour l'écosystème",
+    "products.lens.title": "Lens by KOLIVO™",
+    "products.lens.desc": "Plateforme d'analytique et d'insights",
     
     // Solutions
     "solutions.b2b.title": "Solutions B2B",
