@@ -1,7 +1,7 @@
 /**
  * KOLIVO™ Header Component
- * Design: Brand Aligned 2026 - Navy Foundation
- * Bilingual support (FR/EN)
+ * Level: Apple / Fortune 500
+ * Features: Glass morphism, smooth animations, adaptive dark mode
  */
 
 import { Button } from "@/components/ui/button";
@@ -14,8 +14,9 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { Menu, X, ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { CDN } from "@/lib/cdn";
+import { Menu, X, ArrowRight, ExternalLink } from "lucide-react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitch from "./LanguageSwitch";
@@ -23,61 +24,116 @@ import LanguageSwitch from "./LanguageSwitch";
 export default function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { t, language } = useLanguage();
+  const [scrolled, setScrolled] = useState(false);
+  const { language } = useLanguage();
 
-  // Updated products - removed GUARDO, added consumer-focused products
-  const products = [
-    { 
-      title: "HUB by KOLIVO™", 
-      href: "/products/hub", 
-      description: language === 'fr' ? "Gestion de colocation simplifiée" : "Simplified colocation management",
-      color: "#10b981"
-    },
-    { 
-      title: "Nest by KOLIVO™", 
-      href: "/products/nest", 
-      description: language === 'fr' ? "Gestion immobilière nouvelle génération" : "Next-gen property management",
-      color: "#f59e0b"
-    },
-    { 
-      title: "Seed by KOLIVO™", 
-      href: "/products/seed", 
-      description: language === 'fr' ? "Incubateur de projets communautaires" : "Community project incubator",
-      color: "#14b8a6"
-    },
-  ];
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const solutions = [
-    { 
-      title: language === 'fr' ? "Colocation" : "Coliving", 
-      href: "/solutions/coliving", 
-      description: language === 'fr' ? "Pour les colocataires" : "For roommates"
+  const content = {
+    en: {
+      products: "Products",
+      solutions: "Solutions",
+      security: "Security & Trust",
+      company: "Company",
+      contact: "Contact",
+      haloId: "HALO ID",
+      viewAll: "View all products",
+      productsData: [
+        { 
+          name: "HUB by KOLIVO™", 
+          href: "/products/hub", 
+          desc: "Simplified colocation management",
+          color: "#10B981",
+          status: "In development"
+        },
+        { 
+          name: "Nest by KOLIVO™", 
+          href: "/products/nest", 
+          desc: "Next-gen property management",
+          color: "#F59E0B",
+          status: "2027"
+        },
+        { 
+          name: "Seed by KOLIVO™", 
+          href: "/products/seed", 
+          desc: "Community project incubator",
+          color: "#14B8A6",
+          status: "Planned"
+        },
+      ],
+      solutionsData: [
+        { name: "Coliving", href: "/solutions/coliving", desc: "For roommates and shared living" },
+        { name: "Property Owners", href: "/solutions/owners", desc: "Manage your shared residences" },
+        { name: "Communities", href: "/solutions/communities", desc: "Social impact projects" },
+      ]
     },
-    { 
-      title: language === 'fr' ? "Propriétaires" : "Property Owners", 
-      href: "/solutions/owners", 
-      description: language === 'fr' ? "Gérez vos résidences partagées" : "Manage your shared residences"
-    },
-    { 
-      title: language === 'fr' ? "Communautés" : "Communities", 
-      href: "/solutions/communities", 
-      description: language === 'fr' ? "Projets d'impact social" : "Social impact projects"
-    },
-  ];
+    fr: {
+      products: "Produits",
+      solutions: "Solutions",
+      security: "Sécurité et Confiance",
+      company: "Entreprise",
+      contact: "Contact",
+      haloId: "HALO ID",
+      viewAll: "Voir tous les produits",
+      productsData: [
+        { 
+          name: "HUB by KOLIVO™", 
+          href: "/products/hub", 
+          desc: "Gestion de colocation simplifiée",
+          color: "#10B981",
+          status: "En développement"
+        },
+        { 
+          name: "Nest by KOLIVO™", 
+          href: "/products/nest", 
+          desc: "Gestion immobilière nouvelle génération",
+          color: "#F59E0B",
+          status: "2027"
+        },
+        { 
+          name: "Seed by KOLIVO™", 
+          href: "/products/seed", 
+          desc: "Incubateur de projets communautaires",
+          color: "#14B8A6",
+          status: "Planifié"
+        },
+      ],
+      solutionsData: [
+        { name: "Colocation", href: "/solutions/coliving", desc: "Pour les colocataires" },
+        { name: "Propriétaires", href: "/solutions/owners", desc: "Gérez vos résidences partagées" },
+        { name: "Communautés", href: "/solutions/communities", desc: "Projets d'impact social" },
+      ]
+    }
+  };
+
+  const t = content[language];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+    <header 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        scrolled 
+          ? "bg-white/90 dark:bg-[#0D1117]/90 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm" 
+          : "bg-transparent"
+      )}
+    >
       <div className="container">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - CDN */}
-          <Link href="/" className="flex items-center">
+          {/* Logo - Using local asset with correct path */}
+          <Link href="/" className="flex items-center group">
             <img 
-              src="https://cdn.groupekolivo.com/logos/kolivo-wordmark-navy-tm.svg" 
+              src={scrolled ? CDN.logos.wordmark.navy : CDN.logos.wordmark.white}
               alt="KOLIVO™" 
-              className="h-8 w-auto"
+              className="h-7 lg:h-8 w-auto transition-all duration-300"
               onError={(e) => {
-                // Fallback to local
-                (e.target as HTMLImageElement).src = "/images/kolivo-logo.png";
+                e.currentTarget.src = '/images/kolivo/KOLIVO_wordmark_original.png';
               }}
             />
           </Link>
@@ -85,70 +141,159 @@ export default function Header() {
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList className="gap-1">
+              {/* Products */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-gray-50 text-[#172638] font-medium">
-                  {t("nav.products")}
+                <NavigationMenuTrigger 
+                  className={cn(
+                    "bg-transparent font-medium text-sm transition-colors",
+                    scrolled 
+                      ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                      : "text-white hover:bg-white/10"
+                  )}
+                >
+                  {t.products}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
-                    {products.map((product) => (
-                      <ListItem 
-                        key={product.title} 
-                        title={product.title} 
-                        href={product.href}
-                        color={product.color}
+                  <div className="w-[500px] p-6">
+                    <div className="grid gap-4">
+                      {t.productsData.map((product) => (
+                        <Link
+                          key={product.name}
+                          href={product.href}
+                          className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all"
+                        >
+                          <div 
+                            className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                            style={{ backgroundColor: `${product.color}15` }}
+                          >
+                            <div 
+                              className="w-3 h-3 rounded-full"
+                              style={{ backgroundColor: product.color }}
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <span className="font-semibold text-[#172638] dark:text-white group-hover:text-[#172638] dark:group-hover:text-white">
+                                {product.name}
+                              </span>
+                              <span 
+                                className="text-xs px-2 py-0.5 rounded-full font-medium"
+                                style={{ 
+                                  backgroundColor: `${product.color}20`,
+                                  color: product.color
+                                }}
+                              >
+                                {product.status}
+                              </span>
+                            </div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                              {product.desc}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#172638] dark:group-hover:text-white group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" />
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+                      <Link 
+                        href="/ecosystem" 
+                        className="flex items-center gap-2 text-sm font-medium text-[#172638] dark:text-white hover:text-[#EF4444] transition-colors"
                       >
-                        {product.description}
-                      </ListItem>
-                    ))}
-                  </ul>
+                        {t.viewAll}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+              {/* Solutions */}
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-gray-50 text-[#172638] font-medium">
-                  {t("nav.solutions")}
+                <NavigationMenuTrigger 
+                  className={cn(
+                    "bg-transparent font-medium text-sm transition-colors",
+                    scrolled 
+                      ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                      : "text-white hover:bg-white/10"
+                  )}
+                >
+                  {t.solutions}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1">
-                    {solutions.map((solution) => (
-                      <ListItem key={solution.title} title={solution.title} href={solution.href}>
-                        {solution.description}
-                      </ListItem>
-                    ))}
-                  </ul>
+                  <div className="w-[400px] p-6">
+                    <div className="grid gap-2">
+                      {t.solutionsData.map((solution) => (
+                        <Link
+                          key={solution.name}
+                          href={solution.href}
+                          className="group flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-all"
+                        >
+                          <div>
+                            <span className="font-semibold text-[#172638] dark:text-white">
+                              {solution.name}
+                            </span>
+                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                              {solution.desc}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#172638] dark:group-hover:text-white group-hover:translate-x-1 transition-all" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
+              {/* Security & Trust */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/security-trust" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-[#172638] transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none",
-                    location === "/security-trust" && "bg-gray-50"
-                  )}>
-                    {t("nav.security")}
+                  <Link 
+                    href="/security-trust" 
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                      scrolled 
+                        ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                        : "text-white hover:bg-white/10",
+                      location === "/security-trust" && "bg-gray-100 dark:bg-gray-800"
+                    )}
+                  >
+                    {t.security}
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
+              {/* Company */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/company" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-[#172638] transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none",
-                    location === "/company" && "bg-gray-50"
-                  )}>
-                    {t("nav.company")}
+                  <Link 
+                    href="/company" 
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                      scrolled 
+                        ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                        : "text-white hover:bg-white/10",
+                      location === "/company" && "bg-gray-100 dark:bg-gray-800"
+                    )}
+                  >
+                    {t.company}
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
+              {/* Contact */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
-                  <Link href="/contact" className={cn(
-                    "group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-[#172638] transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none",
-                    location === "/contact" && "bg-gray-50"
-                  )}>
-                    {t("nav.contact")}
+                  <Link 
+                    href="/contact" 
+                    className={cn(
+                      "group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                      scrolled 
+                        ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                        : "text-white hover:bg-white/10",
+                      location === "/contact" && "bg-gray-100 dark:bg-gray-800"
+                    )}
+                  >
+                    {t.contact}
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -157,25 +302,31 @@ export default function Header() {
 
           {/* Right Side: Language + HALO ID CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <LanguageSwitch />
-            {/* HALO ID CTA - Red accent */}
+            <LanguageSwitch scrolled={scrolled} />
+            {/* HALO ID CTA - Red accent with glow */}
             <Button 
               asChild 
-              className="bg-[#EF4444] hover:bg-[#DC2626] text-white font-medium rounded-full px-6"
+              className="bg-[#EF4444] hover:bg-[#DC2626] text-white font-semibold rounded-full px-6 shadow-lg hover:shadow-xl hover:shadow-[#EF4444]/20 transition-all duration-300"
             >
               <a href="https://id.halo.kolivo.ca" target="_blank" rel="noopener noreferrer">
-                {language === 'fr' ? 'HALO ID' : 'HALO ID'}
+                {t.haloId}
                 <ExternalLink className="ml-2 h-4 w-4" />
               </a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center gap-2">
-            <LanguageSwitch />
+          <div className="flex lg:hidden items-center gap-3">
+            <LanguageSwitch scrolled={scrolled} />
             <button
-              className="p-2 text-[#172638]"
+              className={cn(
+                "p-2 rounded-lg transition-colors",
+                scrolled 
+                  ? "text-[#172638] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800" 
+                  : "text-white hover:bg-white/10"
+              )}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -184,59 +335,76 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gray-100 animate-fade-in">
-            <nav className="flex flex-col gap-2">
-              <div className="py-2">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">{t("nav.products")}</p>
-                {products.map((product) => (
+          <div className="lg:hidden py-6 border-t border-gray-200/50 dark:border-gray-800/50 animate-fade-in bg-white dark:bg-[#0D1117]">
+            <nav className="flex flex-col gap-1">
+              {/* Products Section */}
+              <div className="py-3">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-2">
+                  {t.products}
+                </p>
+                {t.productsData.map((product) => (
                   <Link 
-                    key={product.title} 
+                    key={product.name} 
                     href={product.href}
-                    className="block py-2 text-sm text-[#172638] hover:text-[#EF4444] transition-colors"
+                    className="flex items-center gap-3 py-3 px-2 rounded-lg text-[#172638] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {product.title}
+                    <div 
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: product.color }}
+                    />
+                    <span className="font-medium">{product.name}</span>
                   </Link>
                 ))}
               </div>
-              <div className="py-2">
-                <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">{t("nav.solutions")}</p>
-                {solutions.map((solution) => (
+
+              {/* Solutions Section */}
+              <div className="py-3 border-t border-gray-100 dark:border-gray-800">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 px-2">
+                  {t.solutions}
+                </p>
+                {t.solutionsData.map((solution) => (
                   <Link 
-                    key={solution.title} 
+                    key={solution.name} 
                     href={solution.href}
-                    className="block py-2 text-sm text-[#172638] hover:text-[#EF4444] transition-colors"
+                    className="block py-3 px-2 rounded-lg text-[#172638] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {solution.title}
+                    {solution.name}
                   </Link>
                 ))}
               </div>
-              <Link 
-                href="/security-trust" 
-                className="py-2 text-sm text-[#172638] hover:text-[#EF4444] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("nav.security")}
-              </Link>
-              <Link 
-                href="/company" 
-                className="py-2 text-sm text-[#172638] hover:text-[#EF4444] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("nav.company")}
-              </Link>
-              <Link 
-                href="/contact" 
-                className="py-2 text-sm text-[#172638] hover:text-[#EF4444] transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t("nav.contact")}
-              </Link>
-              <div className="pt-4">
+
+              {/* Other Links */}
+              <div className="py-3 border-t border-gray-100 dark:border-gray-800 space-y-1">
+                <Link 
+                  href="/security-trust" 
+                  className="block py-3 px-2 rounded-lg text-[#172638] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t.security}
+                </Link>
+                <Link 
+                  href="/company" 
+                  className="block py-3 px-2 rounded-lg text-[#172638] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t.company}
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="block py-3 px-2 rounded-lg text-[#172638] dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t.contact}
+                </Link>
+              </div>
+
+              {/* HALO ID CTA */}
+              <div className="pt-4 mt-2 border-t border-gray-100 dark:border-gray-800">
                 <Button 
                   asChild 
-                  className="w-full bg-[#EF4444] hover:bg-[#DC2626] text-white font-medium rounded-full"
+                  className="w-full bg-[#EF4444] hover:bg-[#DC2626] text-white font-semibold rounded-full shadow-lg"
                 >
                   <a 
                     href="https://id.halo.kolivo.ca" 
@@ -244,7 +412,7 @@ export default function Header() {
                     rel="noopener noreferrer"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    HALO ID
+                    {t.haloId}
                     <ExternalLink className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
@@ -256,44 +424,3 @@ export default function Header() {
     </header>
   );
 }
-
-const ListItem = ({ 
-  className, 
-  title, 
-  children, 
-  href,
-  color 
-}: { 
-  className?: string; 
-  title: string; 
-  children: React.ReactNode; 
-  href: string;
-  color?: string;
-}) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <Link
-          href={href}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gray-50 focus:bg-gray-50",
-            className
-          )}
-        >
-          <div className="flex items-center gap-2">
-            {color && (
-              <div 
-                className="w-2 h-2 rounded-full" 
-                style={{ backgroundColor: color }}
-              />
-            )}
-            <div className="text-sm font-medium leading-none text-[#172638]">{title}</div>
-          </div>
-          <p className="line-clamp-2 text-sm leading-snug text-gray-500 mt-1 ml-4">
-            {children}
-          </p>
-        </Link>
-      </NavigationMenuLink>
-    </li>
-  );
-};

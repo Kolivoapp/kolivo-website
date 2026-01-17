@@ -1,93 +1,252 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-/* 
- * KOLIVO™ Brand System 2026
- * Technical Specification v2.1
+/**
+ * KOLIVO™ Design System 2026
+ * Level: Apple / Fortune 500 / Bank-Grade
  * 
- * Foundation: Navy #172638
- * Typography: KOLIVO Neo Sans (CDN: cdn.groupekolivo.com)
- * Multi-product architecture with individual accent colors
+ * Core Principles:
+ * - Navy Foundation (#172638)
+ * - KOLIVO Neo Sans Typography
+ * - Product Accent Colors
+ * - Adaptive Dark/Light Mode
+ * - Premium Micro-interactions
  */
 
-/* KOLIVO Neo Sans Variable Font from CDN */
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================
+   KOLIVO NEO SANS - Custom Font
+   ============================================ */
 @font-face {
   font-family: 'KOLIVO Neo Sans';
-  src: url('https://cdn.groupekolivo.com/fonts/variable/KOLIVONeoSans-Variable.woff2') format('woff2-variations');
-  font-weight: 200 900;
+  src: url('/fonts/KolivoNeoSans-Light.woff2') format('woff2');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'KOLIVO Neo Sans';
-  src: url('https://cdn.groupekolivo.com/fonts/variable/KOLIVONeoSans-VariableItalic.woff2') format('woff2-variations');
-  font-weight: 200 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Fallback static fonts */
-@font-face {
-  font-family: 'KOLIVO Neo Sans Static';
-  src: url('https://cdn.groupekolivo.com/fonts/static_named_instances/KOLIVONeoSans-Regular.woff2') format('woff2');
+  src: url('/fonts/KolivoNeoSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'KOLIVO Neo Sans Static';
-  src: url('https://cdn.groupekolivo.com/fonts/static_named_instances/KOLIVONeoSans-Medium.woff2') format('woff2');
+  font-family: 'KOLIVO Neo Sans';
+  src: url('/fonts/KolivoNeoSans-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'KOLIVO Neo Sans Static';
-  src: url('https://cdn.groupekolivo.com/fonts/static_named_instances/KOLIVONeoSans-SemiBold.woff2') format('woff2');
+  font-family: 'KOLIVO Neo Sans';
+  src: url('/fonts/KolivoNeoSans-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'KOLIVO Neo Sans Static';
-  src: url('https://cdn.groupekolivo.com/fonts/static_named_instances/KOLIVONeoSans-Bold.woff2') format('woff2');
+  font-family: 'KOLIVO Neo Sans';
+  src: url('/fonts/KolivoNeoSans-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'KOLIVO Neo Sans Static';
-  src: url('https://cdn.groupekolivo.com/fonts/static_named_instances/KOLIVONeoSans-ExtraBold.woff2') format('woff2');
+  font-family: 'KOLIVO Neo Sans';
+  src: url('/fonts/KolivoNeoSans-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
+/* ============================================
+   CSS CUSTOM PROPERTIES - LIGHT MODE (Default)
+   ============================================ */
+:root {
+  /* === KOLIVO Brand Colors === */
+  --kolivo-navy: #172638;
+  --kolivo-navy-light: #1e3a5f;
+  --kolivo-navy-dark: #0d1821;
+  
+  /* === Product Accent Colors === */
+  --kolivo-halo: #EF4444;
+  --kolivo-hub: #10B981;
+  --kolivo-nest: #F59E0B;
+  --kolivo-seed: #14B8A6;
+  --kolivo-vault: #475569;
+  --kolivo-link: #06B6D4;
+  --kolivo-gate: #EAB308;
+  --kolivo-forge: #F97316;
+  --kolivo-lens: #7A3AD7;
+  --kolivo-atlas: #3B82F6;
+  --kolivo-one: #0EA5E9;
+  --kolivo-studio: #9B8AFB;
+  
+  /* === Semantic Colors - Light Mode === */
+  --background: #FFFFFF;
+  --background-secondary: #F8FAFC;
+  --background-tertiary: #F1F5F9;
+  --foreground: #172638;
+  --foreground-secondary: #475569;
+  --foreground-muted: #94A3B8;
+  
+  --card: #FFFFFF;
+  --card-foreground: #172638;
+  --card-border: #E2E8F0;
+  
+  --primary: #172638;
+  --primary-foreground: #FFFFFF;
+  
+  --secondary: #F1F5F9;
+  --secondary-foreground: #172638;
+  
+  --accent: #EF4444;
+  --accent-foreground: #FFFFFF;
+  
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #172638;
+  
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  
+  --success: #10B981;
+  --warning: #F59E0B;
+  --info: #3B82F6;
+  
+  /* === Typography === */
+  --font-sans: 'KOLIVO Neo Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'KOLIVO Neo Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* === Spacing Scale === */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  
+  /* === Border Radius === */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* === Shadows - Premium === */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glow: 0 0 40px -10px rgb(23 38 56 / 0.3);
+  
+  /* === Transitions === */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* === Z-Index Scale === */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0D1117;
+    --background-secondary: #161B22;
+    --background-tertiary: #21262D;
+    --foreground: #F0F6FC;
+    --foreground-secondary: #C9D1D9;
+    --foreground-muted: #8B949E;
+    
+    --card: #161B22;
+    --card-foreground: #F0F6FC;
+    --card-border: #30363D;
+    
+    --primary: #F0F6FC;
+    --primary-foreground: #0D1117;
+    
+    --secondary: #21262D;
+    --secondary-foreground: #F0F6FC;
+    
+    --muted: #21262D;
+    --muted-foreground: #8B949E;
+    
+    --border: #30363D;
+    --input: #30363D;
+    --ring: #58A6FF;
+    
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --shadow-glow: 0 0 40px -10px rgb(88 166 255 / 0.3);
+  }
+}
+
+/* Manual dark mode class override */
+.dark {
+  --background: #0D1117;
+  --background-secondary: #161B22;
+  --background-tertiary: #21262D;
+  --foreground: #F0F6FC;
+  --foreground-secondary: #C9D1D9;
+  --foreground-muted: #8B949E;
+  
+  --card: #161B22;
+  --card-foreground: #F0F6FC;
+  --card-border: #30363D;
+  
+  --primary: #F0F6FC;
+  --primary-foreground: #0D1117;
+  
+  --secondary: #21262D;
+  --secondary-foreground: #F0F6FC;
+  
+  --muted: #21262D;
+  --muted-foreground: #8B949E;
+  
+  --border: #30363D;
+  --input: #30363D;
+  --ring: #58A6FF;
+}
+
+/* ============================================
+   TAILWIND THEME EXTENSION
+   ============================================ */
 @theme inline {
-  /* Typography */
-  --font-sans: 'KOLIVO Neo Sans', 'KOLIVO Neo Sans Static', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'KOLIVO Neo Sans', 'KOLIVO Neo Sans Static', -apple-system, BlinkMacSystemFont, sans-serif;
-  
-  /* Border Radius */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  
-  /* Semantic Color Mappings */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--card);
+  --color-popover-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -101,452 +260,428 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
   
-  /* KOLIVO™ Foundation Colors */
-  --color-navy: #172638;
-  --color-navy-light: #1e3248;
-  --color-navy-dark: #0f1a24;
-  --color-black: #000000;
-  --color-white: #FFFFFF;
+  /* Product Colors */
+  --color-kolivo-navy: var(--kolivo-navy);
+  --color-kolivo-halo: var(--kolivo-halo);
+  --color-kolivo-hub: var(--kolivo-hub);
+  --color-kolivo-nest: var(--kolivo-nest);
+  --color-kolivo-seed: var(--kolivo-seed);
+  --color-kolivo-vault: var(--kolivo-vault);
+  --color-kolivo-link: var(--kolivo-link);
+  --color-kolivo-gate: var(--kolivo-gate);
+  --color-kolivo-forge: var(--kolivo-forge);
+  --color-kolivo-lens: var(--kolivo-lens);
+  --color-kolivo-atlas: var(--kolivo-atlas);
+  --color-kolivo-one: var(--kolivo-one);
+  --color-kolivo-studio: var(--kolivo-studio);
   
-  /* KOLIVO™ Product Accent Colors */
-  --color-halo: #EF4444;
-  --color-atlas: #3b82f6;
-  --color-hub: #10b981;
-  --color-studio: #9b8afb;
-  --color-forge: #f97316;
-  --color-gate: #eab308;
-  --color-lens: #7a3ad7;
-  --color-link: #06b6d4;
-  --color-nest: #f59e0b;
-  --color-seed: #14b8a6;
-  --color-vault: #475569;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
   
-  /* Semantic Colors */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #DC2626;
-  --color-info: #3b82f6;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
 }
 
-:root {
-  /* Primary: Navy (Master Brand) */
-  --primary: #172638;
-  --primary-foreground: #FFFFFF;
-  --sidebar-primary: #172638;
-  --sidebar-primary-foreground: #FFFFFF;
-  
-  /* Charts use product colors */
-  --chart-1: #10b981; /* HUB */
-  --chart-2: #3b82f6; /* Atlas */
-  --chart-3: #f97316; /* Forge */
-  --chart-4: #9b8afb; /* Studio */
-  --chart-5: #EF4444; /* HALO */
-  
-  --radius: 0.5rem;
-  
-  /* Light Mode */
-  --background: #FFFFFF;
-  --foreground: #172638;
-  --card: #FFFFFF;
-  --card-foreground: #172638;
-  --popover: #FFFFFF;
-  --popover-foreground: #172638;
-  --secondary: #f8fafc;
-  --secondary-foreground: #334155;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #172638;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #172638;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #172638;
-  --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #172638;
-  --sidebar-border: #e2e8f0;
-  --sidebar-ring: #172638;
-}
-
-/* Adaptive Dark Mode - follows user system preference */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --primary: #FFFFFF;
-    --primary-foreground: #172638;
-    --sidebar-primary: #FFFFFF;
-    --sidebar-primary-foreground: #172638;
-    --background: #172638;
-    --foreground: #f8fafc;
-    --card: #1e3248;
-    --card-foreground: #f8fafc;
-    --popover: #1e3248;
-    --popover-foreground: #f8fafc;
-    --secondary: #1e3248;
-    --secondary-foreground: #cbd5e1;
-    --muted: #243447;
-    --muted-foreground: #94a3b8;
-    --accent: #FFFFFF;
-    --accent-foreground: #172638;
-    --destructive: #DC2626;
-    --destructive-foreground: #FFFFFF;
-    --border: #334155;
-    --input: #334155;
-    --ring: #FFFFFF;
-    --sidebar: #1e3248;
-    --sidebar-foreground: #f8fafc;
-    --sidebar-accent: #243447;
-    --sidebar-accent-foreground: #f8fafc;
-    --sidebar-border: #334155;
-    --sidebar-ring: #FFFFFF;
-  }
-}
-
-/* Force dark mode class */
-.dark {
-  --primary: #FFFFFF;
-  --primary-foreground: #172638;
-  --sidebar-primary: #FFFFFF;
-  --sidebar-primary-foreground: #172638;
-  --background: #172638;
-  --foreground: #f8fafc;
-  --card: #1e3248;
-  --card-foreground: #f8fafc;
-  --popover: #1e3248;
-  --popover-foreground: #f8fafc;
-  --secondary: #1e3248;
-  --secondary-foreground: #cbd5e1;
-  --muted: #243447;
-  --muted-foreground: #94a3b8;
-  --accent: #FFFFFF;
-  --accent-foreground: #172638;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #334155;
-  --input: #334155;
-  --ring: #FFFFFF;
-  --sidebar: #1e3248;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-accent: #243447;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #334155;
-  --sidebar-ring: #FFFFFF;
-}
-
+/* ============================================
+   BASE STYLES
+   ============================================ */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
   }
+  
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'KOLIVO Neo Sans', 'KOLIVO Neo Sans Static', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.6;
   }
+  
+  /* Premium Typography Scale */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'KOLIVO Neo Sans', 'KOLIVO Neo Sans Static', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-weight: 700;
     letter-spacing: -0.02em;
+    line-height: 1.1;
   }
   
-  /* Type Scale */
-  h1 { font-size: 3.5rem; line-height: 1.15; font-weight: 700; }
-  h2 { font-size: 2.75rem; line-height: 1.2; font-weight: 700; }
-  h3 { font-size: 2.25rem; line-height: 1.25; font-weight: 600; }
-  h4 { font-size: 1.75rem; line-height: 1.3; font-weight: 600; }
-  h5 { font-size: 1.375rem; line-height: 1.35; font-weight: 500; }
-  
-  @media (max-width: 768px) {
-    h1 { font-size: 2.25rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.5rem; }
-    h4 { font-size: 1.25rem; }
-    h5 { font-size: 1.125rem; }
+  h1 {
+    font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+    font-weight: 800;
   }
   
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
+  h2 {
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw + 0.25rem, 2.5rem);
+  }
+  
+  h4 {
+    font-size: clamp(1.25rem, 2vw + 0.25rem, 1.75rem);
+  }
+  
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: var(--foreground-secondary);
+  }
+  
+  /* Selection */
+  ::selection {
+    background-color: var(--kolivo-navy);
+    color: white;
+  }
+  
+  /* Focus Ring - Premium */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  
+  /* Scrollbar - Premium */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--foreground-muted);
   }
 }
 
+/* ============================================
+   COMPONENT STYLES
+   ============================================ */
 @layer components {
+  /* Container - Premium */
   .container {
     width: 100%;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: var(--space-6);
+    padding-right: var(--space-6);
   }
-
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
-
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-    }
-  }
-
+  
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      max-width: 1280px;
+      padding-left: var(--space-8);
+      padding-right: var(--space-8);
     }
   }
-
-  /* KOLIVO™ Custom Components */
-  .font-display {
-    font-family: 'KOLIVO Neo Sans', 'KOLIVO Neo Sans Static', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Section Spacing */
+  .section {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
   }
-
-  .section-label {
-    font-family: 'KOLIVO Neo Sans', sans-serif;
+  
+  @media (min-width: 1024px) {
+    .section {
+      padding-top: var(--space-32);
+      padding-bottom: var(--space-32);
+    }
+  }
+  
+  /* Premium Card */
+  .card-premium {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-smooth);
+  }
+  
+  .card-premium:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+    border-color: var(--kolivo-navy);
+  }
+  
+  /* Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    .glass {
+      background: rgba(13, 17, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
+  
+  /* Button Premium */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    background: var(--kolivo-navy);
+    color: white;
     font-weight: 600;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #172638;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+    border: none;
+    cursor: pointer;
   }
-
-  .text-gradient-navy {
-    background: linear-gradient(135deg, #172638 0%, #1e3248 100%);
+  
+  .btn-primary:hover {
+    background: var(--kolivo-navy-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-8);
+    background: transparent;
+    color: var(--kolivo-navy);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--kolivo-navy);
+    transition: all var(--transition-base);
+    cursor: pointer;
+  }
+  
+  .btn-secondary:hover {
+    background: var(--kolivo-navy);
+    color: white;
+    transform: translateY(-2px);
+  }
+  
+  .btn-halo {
+    background: var(--kolivo-halo);
+    color: white;
+  }
+  
+  .btn-halo:hover {
+    background: #DC2626;
+    box-shadow: 0 0 30px -5px var(--kolivo-halo);
+  }
+  
+  /* Product Accent Badges */
+  .badge-hub { background: var(--kolivo-hub); color: white; }
+  .badge-nest { background: var(--kolivo-nest); color: white; }
+  .badge-seed { background: var(--kolivo-seed); color: white; }
+  .badge-halo { background: var(--kolivo-halo); color: white; }
+  .badge-vault { background: var(--kolivo-vault); color: white; }
+  .badge-link { background: var(--kolivo-link); color: white; }
+  .badge-gate { background: var(--kolivo-gate); color: var(--kolivo-navy); }
+  .badge-forge { background: var(--kolivo-forge); color: white; }
+  .badge-lens { background: var(--kolivo-lens); color: white; }
+  .badge-atlas { background: var(--kolivo-atlas); color: white; }
+  .badge-one { background: var(--kolivo-one); color: white; }
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--kolivo-navy) 0%, var(--kolivo-navy-light) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
-  /* Foundation Color Utilities */
-  .bg-navy { background-color: #172638; }
-  .bg-navy-light { background-color: #1e3248; }
-  .bg-navy-dark { background-color: #0f1a24; }
-  .text-navy { color: #172638; }
-  .border-navy { border-color: #172638; }
-
-  /* Product Color Utilities */
-  .bg-halo { background-color: #EF4444; }
-  .text-halo { color: #EF4444; }
-  .border-halo { border-color: #EF4444; }
-
-  .bg-atlas { background-color: #3b82f6; }
-  .text-atlas { color: #3b82f6; }
-  .border-atlas { border-color: #3b82f6; }
-
-  .bg-hub { background-color: #10b981; }
-  .text-hub { color: #10b981; }
-  .border-hub { border-color: #10b981; }
-
-  .bg-studio { background-color: #9b8afb; }
-  .text-studio { color: #9b8afb; }
-  .border-studio { border-color: #9b8afb; }
-
-  .bg-forge { background-color: #f97316; }
-  .text-forge { color: #f97316; }
-  .border-forge { border-color: #f97316; }
-
-  .bg-gate { background-color: #eab308; }
-  .text-gate { color: #eab308; }
-  .border-gate { border-color: #eab308; }
-
-  .bg-lens { background-color: #7a3ad7; }
-  .text-lens { color: #7a3ad7; }
-  .border-lens { border-color: #7a3ad7; }
-
-  .bg-link { background-color: #06b6d4; }
-  .text-link { color: #06b6d4; }
-  .border-link { border-color: #06b6d4; }
-
-  .bg-nest { background-color: #f59e0b; }
-  .text-nest { color: #f59e0b; }
-  .border-nest { border-color: #f59e0b; }
-
-  .bg-seed { background-color: #14b8a6; }
-  .text-seed { color: #14b8a6; }
-  .border-seed { border-color: #14b8a6; }
-
-  .bg-vault { background-color: #475569; }
-  .text-vault { color: #475569; }
-  .border-vault { border-color: #475569; }
-
-  /* Hover Effects */
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  /* Section Label */
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--kolivo-navy);
+    padding: var(--space-2) var(--space-4);
+    background: var(--background-secondary);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-6);
   }
-
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px -12px rgba(23, 38, 56, 0.2);
-  }
-
-  .hover-glow {
-    transition: box-shadow 0.3s ease;
-  }
-
-  .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(23, 38, 56, 0.15);
-  }
-
-  /* Card Styles */
-  .card-glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-  }
-
-  .card-navy {
-    background: #1e3248;
-    border: 1px solid #334155;
-  }
-
-  /* Button Variants */
-  .btn-primary {
-    background-color: #172638;
-    color: #FFFFFF;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(23, 38, 56, 0.3);
-  }
-
-  .btn-halo {
-    background-color: #EF4444;
-    color: #FFFFFF;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    transition: all 0.3s ease;
-  }
-
-  .btn-halo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: #172638;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    border: 2px solid #172638;
-    transition: all 0.3s ease;
-  }
-
-  .btn-secondary:hover {
-    background: #172638;
-    color: #FFFFFF;
-  }
-
-  /* Pill Shapes */
-  .pill {
-    border-radius: 9999px;
-    padding: 0.5rem 1rem;
-  }
-
-  .pill-sm {
-    border-radius: 9999px;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
-  }
-
-  .pill-lg {
-    border-radius: 9999px;
-    padding: 0.75rem 1.5rem;
+  
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: var(--space-16) 0;
   }
 }
 
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
 @layer utilities {
+  /* Text Balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Animate on Scroll */
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
   }
-
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.5s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.3s ease-out forwards;
-  }
-
+  
   @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-
+  
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  /* Stagger animation delays */
+  
+  /* Stagger Animation Delays */
   .delay-100 { animation-delay: 100ms; }
   .delay-200 { animation-delay: 200ms; }
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
+  
+  /* Hover Scale */
+  .hover-scale {
+    transition: transform var(--transition-base);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Glow Effects */
+  .glow-navy {
+    box-shadow: 0 0 40px -10px var(--kolivo-navy);
+  }
+  
+  .glow-halo {
+    box-shadow: 0 0 40px -10px var(--kolivo-halo);
+  }
+  
+  /* Navy Background */
+  .bg-navy {
+    background-color: var(--kolivo-navy);
+  }
+  
+  .bg-navy-gradient {
+    background: linear-gradient(135deg, var(--kolivo-navy) 0%, var(--kolivo-navy-dark) 100%);
+  }
+  
+  /* Flex utilities */
+  .flex {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+/* ============================================
+   ANIMATIONS - Premium Micro-interactions
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px -5px var(--kolivo-halo); }
+  50% { box-shadow: 0 0 40px -5px var(--kolivo-halo); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ============================================
+   RESPONSIVE UTILITIES
+   ============================================ */
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  
+  .section {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }
