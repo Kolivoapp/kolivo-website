@@ -163,22 +163,11 @@ export default function ProductLens() {
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            {/* Product Logo */}
-            <div className="flex justify-center mb-6">
-              <img 
-                src={CDN.products.lens.accent}
-                alt="KOLIVO™ Lens"
-                className="h-10 w-auto"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            </div>
             <div 
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6"
-              style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
+              style={{ backgroundColor: `${accentColor}20`, color: accentColor }}
             >
-              {t.status}
+              {language === 'en' ? 'Book Now' : 'Réserver'}
             </div>
             <p className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: accentColor }}>
               {t.tagline}

@@ -1,7 +1,7 @@
 /**
  * KOLIVO™ Header
  * Style: Institutional Light Mode
- * All official products included
+ * Supports product logo override on product pages
  */
 
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,21 @@ import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitch from "./LanguageSwitch";
 
+// Product logo mapping
+const PRODUCT_LOGOS: Record<string, { logo: string; name: string }> = {
+  '/products/hub': { logo: CDN.products.hub.accent, name: 'KOLIVO™ Hub' },
+  '/products/halo': { logo: CDN.products.halo.accent, name: 'Halo • ID' },
+  '/products/nest': { logo: CDN.products.nest.accent, name: 'KOLIVO™ Nest' },
+  '/products/seed': { logo: CDN.products.seed.accent, name: 'KOLIVO™ Seed' },
+  '/products/lens': { logo: CDN.products.lens.accent, name: 'KOLIVO™ Lens' },
+  '/products/atlas': { logo: CDN.products.atlas.accent, name: 'KOLIVO™ Atlas' },
+  '/products/studio': { logo: CDN.products.studio.accent, name: 'KOLIVO™ Studio' },
+  '/products/forge': { logo: CDN.products.forge.accent, name: 'KOLIVO™ Forge' },
+  '/products/gate': { logo: CDN.products.gate.accent, name: 'KOLIVO™ Gate' },
+  '/products/link': { logo: CDN.products.link.accent, name: 'KOLIVO™ Link' },
+  '/products/vault': { logo: CDN.products.vault.accent, name: 'KOLIVO™ Vault' },
+};
+
 export default function Header() {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,6 +35,11 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { language } = useLanguage();
   const productsRef = useRef<HTMLDivElement>(null);
+
+  // Get product logo if on a product page
+  const productInfo = PRODUCT_LOGOS[location];
+  const headerLogo = productInfo ? productInfo.logo : CDN.logos.wordmark.navy;
+  const headerLogoAlt = productInfo ? productInfo.name : 'KOLIVO™';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +75,7 @@ export default function Header() {
         { name: "KOLIVO™ Nest", desc: "Property management", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027", category: "core" },
         { name: "KOLIVO™ Seed", desc: "Community incubator", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev", category: "core" },
         // Platform Products
-        { name: "KOLIVO™ Lens", desc: "Business optimization", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Soon", category: "platform" },
+        { name: "KOLIVO™ Lens", desc: "Business optimization", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Book Now", category: "platform" },
         { name: "KOLIVO™ Atlas", desc: "Investor portal", href: "/products/atlas", icon: TrendingUp, color: PRODUCT_COLORS.atlas, status: "Soon", category: "platform" },
         { name: "KOLIVO™ Studio", desc: "Strategic consulting", href: "/products/studio", icon: Lightbulb, color: PRODUCT_COLORS.studio, status: "Invite", category: "platform" },
         // Infrastructure (hidden from main nav, accessible via direct link)
@@ -80,7 +100,7 @@ export default function Header() {
         { name: "KOLIVO™ Nest", desc: "Gestion immobilière", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027", category: "core" },
         { name: "KOLIVO™ Seed", desc: "Incubateur communautaire", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev", category: "core" },
         // Platform Products
-        { name: "KOLIVO™ Lens", desc: "Optimisation d'affaires", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Bientôt", category: "platform" },
+        { name: "KOLIVO™ Lens", desc: "Optimisation d'affaires", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Réserver", category: "platform" },
         { name: "KOLIVO™ Atlas", desc: "Portail investisseur", href: "/products/atlas", icon: TrendingUp, color: PRODUCT_COLORS.atlas, status: "Bientôt", category: "platform" },
         { name: "KOLIVO™ Studio", desc: "Conseil stratégique", href: "/products/studio", icon: Lightbulb, color: PRODUCT_COLORS.studio, status: "Invitation", category: "platform" },
         // Infrastructure
@@ -95,9 +115,14 @@ export default function Header() {
   const t = content[language];
   
   // Filter products for navigation (exclude internal infra)
-  const navProducts = t.productsList.filter(p => p.category !== 'infra');
   const coreProducts = t.productsList.filter(p => p.category === 'core');
   const platformProducts = t.productsList.filter(p => p.category === 'platform');
+
+  // Get status badge color
+  const getStatusColor = (status: string) => {
+    if (status === 'Book Now' || status === 'Réserver') return 'bg-purple-100 text-purple-700';
+    return 'bg-slate-100 text-slate-500';
+  };
 
   const navLinks = [
     { label: t.solutions, href: "/solutions/coliving" },
@@ -115,15 +140,16 @@ export default function Header() {
       >
         <div className="container">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
+            {/* Logo - Shows product logo on product pages */}
+            <Link href={productInfo ? location : "/"} className="flex items-center">
               <img 
-                src={CDN.logos.wordmark.navy}
-                alt="KOLIVO™" 
+                src={headerLogo}
+                alt={headerLogoAlt} 
                 className="h-6 w-auto"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.style.display = 'none';
+                  // Fallback to main logo
+                  e.currentTarget.src = CDN.logos.wordmark.navy;
                 }}
               />
             </Link>
@@ -196,7 +222,7 @@ export default function Header() {
                         <div className="flex-1">
                           <div className="flex items-center gap-2">
                             <span className="text-sm font-medium text-slate-900">{product.name}</span>
-                            <span className="text-xs px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
+                            <span className={cn("text-xs px-1.5 py-0.5 rounded", getStatusColor(product.status))}>
                               {product.status}
                             </span>
                           </div>
@@ -317,7 +343,7 @@ export default function Header() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
                           <span className="text-sm font-medium text-slate-900">{product.name}</span>
-                          <span className="text-xs px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
+                          <span className={cn("text-xs px-1.5 py-0.5 rounded", getStatusColor(product.status))}>
                             {product.status}
                           </span>
                         </div>

@@ -128,17 +128,6 @@ export default function ProductStudio() {
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            {/* Product Logo */}
-            <div className="flex justify-center mb-6">
-              <img 
-                src={CDN.products.studio.accent}
-                alt="KOLIVO™ Studio"
-                className="h-10 w-auto"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            </div>
             <div 
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6"
               style={{ backgroundColor: `${accentColor}15`, color: accentColor }}

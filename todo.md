@@ -64,3 +64,9 @@
 - [ ] Fix naming: KOLIVO™ [Name] everywhere, except "Halo • ID"
 - [ ] Press page: Fix logo (use kolivo-wordmark-tm-accent)
 - [ ] Press page: Fix download assets button
+
+
+## Phase 5: Logo and Badge Fixes
+- [ ] Product pages: Replace header logo with product logo (not add extra logo in hero)
+- [ ] Remove duplicate logo from hero sections
+- [ ] Lens: Change badge from "Coming Soon" to "Book Now" in purple/mauve
