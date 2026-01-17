@@ -1,9 +1,9 @@
 /**
  * KOLIVO™ Home Page
  * Style: Institutional Light Mode
- * CORRECTED: No fake stats, no false certifications
  */
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { PRODUCT_COLORS } from "@/lib/cdn";
@@ -22,9 +22,16 @@ import {
   Zap
 } from "lucide-react";
 import { Link } from "wouter";
+import WaitlistForm from "@/components/WaitlistForm";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Home() {
   const { language } = useLanguage();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   const content = {
     en: {
@@ -32,7 +39,7 @@ export default function Home() {
         label: "Coliving Management Platform",
         title: "The complete platform for shared living",
         description: "KOLIVO™ provides everything roommates and property managers need to organize shared living spaces. From expense splitting to task management, communication to lease tracking — all in one secure platform built in Canada.",
-        cta: "Join the Beta",
+        cta: "Become a Beta Tester",
         ctaSecondary: "See How It Works"
       },
       features: {
@@ -84,7 +91,8 @@ export default function Home() {
             color: PRODUCT_COLORS.hub,
             icon: Users,
             href: "/products/hub",
-            status: "Beta Testing"
+            status: "Beta Testing",
+            statusColor: "orange"
           },
           {
             name: "Nest",
@@ -93,7 +101,8 @@ export default function Home() {
             color: PRODUCT_COLORS.nest,
             icon: Building2,
             href: "/products/nest",
-            status: "Coming 2027"
+            status: "Coming 2027",
+            statusColor: "slate"
           },
           {
             name: "Seed",
@@ -102,7 +111,8 @@ export default function Home() {
             color: PRODUCT_COLORS.seed,
             icon: Leaf,
             href: "/products/seed",
-            status: "In Development"
+            status: "In Development",
+            statusColor: "slate"
           },
           {
             name: "Halo",
@@ -111,7 +121,8 @@ export default function Home() {
             color: PRODUCT_COLORS.halo,
             icon: Shield,
             href: "/products/halo",
-            status: "In Development"
+            status: "Available",
+            statusColor: "emerald"
           }
         ]
       },
@@ -130,9 +141,9 @@ export default function Home() {
         cta: "Learn About Our Approach"
       },
       cta: {
-        title: "Ready to simplify your shared living?",
-        description: "Join our beta program and be among the first to experience a better way to manage coliving. Free to join, no credit card required.",
-        button: "Join the Beta",
+        title: "Be part of the journey",
+        description: "Join our beta program and help shape the future of shared living. Your feedback matters. Free to join, no credit card required.",
+        button: "Become a Beta Tester",
         buttonSecondary: "Contact Us"
       }
     },
@@ -141,7 +152,7 @@ export default function Home() {
         label: "Plateforme de gestion de colocation",
         title: "La plateforme complète pour la vie partagée",
         description: "KOLIVO™ offre tout ce dont les colocataires et gestionnaires immobiliers ont besoin pour organiser les espaces de vie partagés. Du partage des dépenses à la gestion des tâches, de la communication au suivi des baux — le tout sur une plateforme sécurisée construite au Canada.",
-        cta: "Rejoindre la bêta",
+        cta: "Devenez testeur",
         ctaSecondary: "Voir comment ça marche"
       },
       features: {
@@ -193,7 +204,8 @@ export default function Home() {
             color: PRODUCT_COLORS.hub,
             icon: Users,
             href: "/products/hub",
-            status: "Test bêta"
+            status: "Test bêta",
+            statusColor: "orange"
           },
           {
             name: "Nest",
@@ -202,7 +214,8 @@ export default function Home() {
             color: PRODUCT_COLORS.nest,
             icon: Building2,
             href: "/products/nest",
-            status: "Bientôt 2027"
+            status: "Bientôt 2027",
+            statusColor: "slate"
           },
           {
             name: "Seed",
@@ -211,7 +224,8 @@ export default function Home() {
             color: PRODUCT_COLORS.seed,
             icon: Leaf,
             href: "/products/seed",
-            status: "En développement"
+            status: "En développement",
+            statusColor: "slate"
           },
           {
             name: "Halo",
@@ -220,7 +234,8 @@ export default function Home() {
             color: PRODUCT_COLORS.halo,
             icon: Shield,
             href: "/products/halo",
-            status: "En développement"
+            status: "Disponible",
+            statusColor: "emerald"
           }
         ]
       },
@@ -239,9 +254,9 @@ export default function Home() {
         cta: "En savoir plus sur notre approche"
       },
       cta: {
-        title: "Prêt à simplifier votre colocation?",
-        description: "Rejoignez notre programme bêta et soyez parmi les premiers à découvrir une meilleure façon de gérer la colocation. Gratuit, aucune carte de crédit requise.",
-        button: "Rejoindre la bêta",
+        title: "Faites partie de l'aventure",
+        description: "Rejoignez notre programme bêta et aidez à façonner l'avenir de la vie partagée. Votre avis compte. Gratuit, aucune carte de crédit requise.",
+        button: "Devenez testeur",
         buttonSecondary: "Nous contacter"
       }
     }
@@ -249,10 +264,20 @@ export default function Home() {
 
   const t = content[language];
 
+  const getStatusClasses = (statusColor: string) => {
+    if (statusColor === "orange") {
+      return "bg-orange-100 text-orange-700";
+    }
+    if (statusColor === "emerald") {
+      return "bg-emerald-100 text-emerald-700";
+    }
+    return "bg-slate-100 text-slate-600";
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-16 pb-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-4">
@@ -266,12 +291,17 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg">
-                <Link href="/contact">
-                  {t.hero.cta}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg">
+                    {t.hero.cta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-lg">
+                  <WaitlistForm onClose={() => setIsWaitlistOpen(false)} variant="modal" />
+                </DialogContent>
+              </Dialog>
               <Button asChild variant="outline" size="lg" className="border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3 rounded-lg">
                 <Link href="/products/hub">
                   {t.hero.ctaSecondary}
@@ -283,7 +313,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-3">
@@ -315,7 +345,7 @@ export default function Home() {
       </section>
 
       {/* Ecosystem Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-3">
@@ -343,13 +373,7 @@ export default function Home() {
                         style={{ color: product.color }}
                       />
                     </div>
-                    <span 
-                      className="text-xs font-medium px-2 py-1 rounded"
-                      style={{ 
-                        backgroundColor: `${product.color}15`,
-                        color: product.color
-                      }}
-                    >
+                    <span className={`text-xs font-medium px-2 py-1 rounded ${getStatusClasses(product.statusColor)}`}>
                       {product.status}
                     </span>
                   </div>
@@ -362,8 +386,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Section - NO FALSE CERTIFICATIONS */}
-      <section className="py-20 bg-white">
+      {/* Trust Section */}
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -398,23 +422,28 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-900">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               {t.cta.title}
             </h2>
-            <p className="text-slate-600 text-lg mb-8">
+            <p className="text-slate-300 text-lg mb-8">
               {t.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg">
-                <Link href="/contact">
-                  {t.cta.button}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-slate-300 text-slate-700 hover:bg-slate-100 px-6 py-3 rounded-lg">
+              <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg">
+                    {t.cta.button}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-lg">
+                  <WaitlistForm onClose={() => setIsWaitlistOpen(false)} variant="modal" />
+                </DialogContent>
+              </Dialog>
+              <Button asChild variant="outline" size="lg" className="border-slate-600 text-white hover:bg-slate-800 px-6 py-3 rounded-lg">
                 <Link href="/contact">
                   {t.cta.buttonSecondary}
                 </Link>

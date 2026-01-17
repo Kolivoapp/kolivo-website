@@ -9,14 +9,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
+// Products - Official KOLIVO™ products only
 import ProductHub from "./pages/products/Hub";
-import ProductStudioPlus from "./pages/products/StudioPlus";
-import ProductGuardo from "./pages/products/Guardo";
+import ProductHalo from "./pages/products/Halo";
+import ProductLens from "./pages/products/Lens";
+import ProductNest from "./pages/products/Nest";
+import ProductSeed from "./pages/products/Seed";
+// Solutions
 import SolutionB2B from "./pages/solutions/B2B";
 import SolutionEnterprise from "./pages/solutions/Enterprise";
 import SolutionImpact from "./pages/solutions/Impact";
 import SolutionPublicSector from "./pages/solutions/PublicSector";
 import SolutionColiving from "./pages/solutions/Coliving";
+// Other pages
 import SecurityTrust from "./pages/SecurityTrust";
 import Company from "./pages/Company";
 import CompanyCareers from "./pages/CompanyCareers";
@@ -29,10 +34,12 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
-      {/* Products */}
+      {/* Products - Official KOLIVO™ products */}
       <Route path="/products/hub" component={ProductHub} />
-      <Route path="/products/studio-plus" component={ProductStudioPlus} />
-      <Route path="/products/guardo" component={ProductGuardo} />
+      <Route path="/products/halo" component={ProductHalo} />
+      <Route path="/products/lens" component={ProductLens} />
+      <Route path="/products/nest" component={ProductNest} />
+      <Route path="/products/seed" component={ProductSeed} />
       {/* Solutions */}
       <Route path="/solutions/coliving" component={SolutionColiving} />
       <Route path="/solutions/b2b" component={SolutionB2B} />
@@ -67,7 +74,7 @@ function App() {
             <ScrollToTop />
             <div className="flex flex-col min-h-screen">
               <Header />
-              <main className="flex-1 pt-16 lg:pt-20">
+              <main className="flex-1">
                 <Router />
               </main>
               <Footer />

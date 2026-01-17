@@ -33,8 +33,8 @@ export default function WaitlistForm({ onClose, variant = "inline" }: WaitlistFo
 
   const content = {
     en: {
-      title: "Join the Waitlist",
-      subtitle: "Be the first to know when HUB by KOLIVO™ launches.",
+      title: "Become a Beta Tester",
+      subtitle: "Be part of the game. Help shape the future of shared living.",
       firstName: "First Name",
       lastName: "Last Name",
       email: "Email Address",
@@ -42,7 +42,7 @@ export default function WaitlistForm({ onClose, variant = "inline" }: WaitlistFo
       phonePlaceholder: "+1 (514) 000-0000",
       consent: "I consent to receive electronic communications from KOLIVO™ Technologies Inc. regarding product updates, launch announcements, and promotional offers. I understand that I can withdraw my consent at any time by contacting privacy@kolivo.ca or by clicking the unsubscribe link in any communication.",
       privacyLink: "View our Privacy Policy",
-      submit: "Join the Waitlist",
+      submit: "Join the Beta Program",
       submitting: "Submitting...",
       success: "You're on the list!",
       successMessage: "We'll notify you as soon as HUB by KOLIVO™ is available.",
@@ -52,8 +52,8 @@ export default function WaitlistForm({ onClose, variant = "inline" }: WaitlistFo
       consentRequired: "You must consent to receive communications to join the waitlist",
     },
     fr: {
-      title: "Rejoindre la liste d'attente",
-      subtitle: "Soyez parmi les premiers informés du lancement de HUB by KOLIVO™.",
+      title: "Devenez testeur",
+      subtitle: "Faites partie de l'aventure. Aidez à façonner l'avenir de la vie partagée.",
       firstName: "Prénom",
       lastName: "Nom de famille",
       email: "Adresse courriel",
@@ -61,7 +61,7 @@ export default function WaitlistForm({ onClose, variant = "inline" }: WaitlistFo
       phonePlaceholder: "+1 (514) 000-0000",
       consent: "Je consens à recevoir des communications électroniques de KOLIVO™ Technologies Inc. concernant les mises à jour de produits, les annonces de lancement et les offres promotionnelles. Je comprends que je peux retirer mon consentement à tout moment en contactant privacy@kolivo.ca ou en cliquant sur le lien de désabonnement dans toute communication.",
       privacyLink: "Consulter notre Politique de confidentialité",
-      submit: "Rejoindre la liste d'attente",
+      submit: "Rejoindre le programme bêta",
       submitting: "Envoi en cours...",
       success: "Vous êtes inscrit!",
       successMessage: "Nous vous informerons dès que HUB by KOLIVO™ sera disponible.",

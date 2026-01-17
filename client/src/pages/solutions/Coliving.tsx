@@ -1,25 +1,33 @@
 /**
  * Coliving Management Solution Page
- * Design: Swiss Corporate Modernism
- * Bilingual support (FR/EN)
+ * Style: Institutional Light Mode
  */
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Home, Users, Calendar, Wallet, CheckSquare, Shield, ArrowRight } from "lucide-react";
 import WaitlistForm from "@/components/WaitlistForm";
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function ColivingSolution() {
   const { language } = useLanguage();
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   const content = {
     en: {
-      tagline: "COLIVING MANAGEMENT",
-      title: "The Complete Platform for Shared Living",
-      description: "HUB by KOLIVO™ transforms how roommates manage their shared space. From finances to chores, from calendars to agreements — everything in one place, designed with care.",
+      hero: {
+        tagline: "Coliving Management",
+        title: "The complete platform for shared living",
+        description: "HUB by KOLIVO™ transforms how roommates manage their shared space. From finances to chores, from calendars to agreements — everything in one place, designed with care."
+      },
       features: {
-        title: "Everything You Need",
+        title: "Everything you need",
         subtitle: "Built for the reality of shared living",
         items: [
           {
@@ -50,12 +58,12 @@ export default function ColivingSolution() {
           {
             icon: Shield,
             title: "Secure & Private",
-            description: "Your data stays yours. Enterprise-grade security with privacy by design."
+            description: "Your data stays yours. Privacy by design with Canadian data residency."
           }
         ]
       },
       values: {
-        title: "Our Values",
+        title: "Our values",
         items: [
           { title: "Kindness", description: "Technology that promotes harmony" },
           { title: "Trust", description: "Transparency in every interaction" },
@@ -63,53 +71,55 @@ export default function ColivingSolution() {
         ]
       },
       cta: {
-        title: "Ready to Transform Your Coliving Experience?",
-        description: "Join the waitlist and be the first to know when HUB by KOLIVO™ launches.",
-        button: "Join the Waitlist"
+        title: "Ready to transform your coliving experience?",
+        description: "Join our beta program and help shape the future of shared living.",
+        button: "Become a Beta Tester"
       }
     },
     fr: {
-      tagline: "GESTION COLOCATIVE",
-      title: "La Plateforme Complète pour la Vie Partagée",
-      description: "HUB by KOLIVO™ transforme la façon dont les colocataires gèrent leur espace partagé. Des finances aux corvées, du calendrier aux ententes — tout au même endroit, conçu avec soin.",
+      hero: {
+        tagline: "Gestion colocative",
+        title: "La plateforme complète pour la vie partagée",
+        description: "HUB by KOLIVO™ transforme la façon dont les colocataires gèrent leur espace partagé. Des finances aux corvées, du calendrier aux ententes — tout au même endroit, conçu avec soin."
+      },
       features: {
-        title: "Tout Ce Dont Vous Avez Besoin",
+        title: "Tout ce dont vous avez besoin",
         subtitle: "Conçu pour la réalité de la vie partagée",
         items: [
           {
             icon: Wallet,
-            title: "Finances Partagées",
+            title: "Finances partagées",
             description: "Suivez les dépenses, partagez les factures équitablement et maintenez des soldes transparents."
           },
           {
             icon: CheckSquare,
-            title: "Corvées Intelligentes",
+            title: "Corvées intelligentes",
             description: "Rotation intelligente des tâches qui assure une distribution équitable et la responsabilisation."
           },
           {
             icon: Calendar,
-            title: "Calendrier Partagé",
+            title: "Calendrier partagé",
             description: "Coordonnez les horaires, planifiez des événements et suivez les absences ensemble."
           },
           {
             icon: Home,
-            title: "Inventaire du Foyer",
+            title: "Inventaire du foyer",
             description: "Gardez une trace des biens partagés et personnels avec une propriété claire."
           },
           {
             icon: Users,
-            title: "Ententes et Règles",
+            title: "Ententes et règles",
             description: "Ententes numériques avec signatures électroniques pour les règles de la maison."
           },
           {
             icon: Shield,
-            title: "Sécurisé et Privé",
-            description: "Vos données restent les vôtres. Sécurité de niveau entreprise avec confidentialité par conception."
+            title: "Sécurisé et privé",
+            description: "Vos données restent les vôtres. Confidentialité par conception avec résidence des données au Canada."
           }
         ]
       },
       values: {
-        title: "Nos Valeurs",
+        title: "Nos valeurs",
         items: [
           { title: "Bienveillance", description: "Une technologie qui favorise l'harmonie" },
           { title: "Confiance", description: "Transparence dans chaque interaction" },
@@ -117,9 +127,9 @@ export default function ColivingSolution() {
         ]
       },
       cta: {
-        title: "Prêt à Transformer Votre Expérience de Colocation?",
-        description: "Rejoignez la liste d'attente et soyez le premier informé du lancement de HUB by KOLIVO™.",
-        button: "Rejoindre la Liste d'Attente"
+        title: "Prêt à transformer votre expérience de colocation?",
+        description: "Rejoignez notre programme bêta et aidez à façonner l'avenir de la vie partagée.",
+        button: "Devenez testeur"
       }
     }
   };
@@ -127,49 +137,49 @@ export default function ColivingSolution() {
   const t = content[language];
 
   return (
-    <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-b from-primary/5 to-background">
+    <div className="min-h-screen bg-white">
+      {/* Hero - Light Mode */}
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block px-4 py-2 bg-primary/10 text-primary text-sm font-medium tracking-wider rounded-full mb-6">
-              {t.tagline}
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              {t.title}
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-4">
+              {t.hero.tagline}
+            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+              {t.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              {t.description}
+            <p className="text-lg text-slate-600 leading-relaxed">
+              {t.hero.description}
             </p>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 lg:py-28">
+      {/* Features */}
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
               {t.features.title}
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-slate-600">
               {t.features.subtitle}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.features.items.map((feature, index) => (
               <div 
                 key={index}
-                className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg"
+                className="p-6 rounded-lg bg-slate-50 border border-slate-200 hover:border-emerald-200 transition-colors"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-primary" />
+                <div className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center mb-4">
+                  <feature.icon className="w-6 h-6 text-emerald-600" />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -178,19 +188,19 @@ export default function ColivingSolution() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 lg:py-28 bg-muted/30">
+      {/* Values */}
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
             {t.values.title}
           </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {t.values.items.map((value, index) => (
               <div key={index} className="text-center">
-                <h3 className="font-display text-2xl font-bold text-primary mb-3">
+                <h3 className="text-xl font-bold text-emerald-600 mb-2">
                   {value.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-slate-600 text-sm">
                   {value.description}
                 </p>
               </div>
@@ -199,19 +209,27 @@ export default function ColivingSolution() {
         </div>
       </section>
 
-      {/* CTA Section with Waitlist Form */}
-      <section className="py-20 lg:py-28">
+      {/* CTA */}
+      <section className="py-16 lg:py-20 bg-slate-900">
         <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
-                {t.cta.title}
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                {t.cta.description}
-              </p>
-            </div>
-            <WaitlistForm />
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              {t.cta.title}
+            </h2>
+            <p className="text-slate-300 text-lg mb-8">
+              {t.cta.description}
+            </p>
+            <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
+              <DialogTrigger asChild>
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg">
+                  {t.cta.button}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-lg">
+                <WaitlistForm onClose={() => setIsWaitlistOpen(false)} variant="modal" />
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>

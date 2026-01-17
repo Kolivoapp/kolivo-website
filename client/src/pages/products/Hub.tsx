@@ -1,7 +1,6 @@
 /**
  * HUB by KOLIVO™ Product Page
  * Style: Institutional Light Mode
- * FIXED: Better contrast, no dark hero with unreadable text
  */
 
 import { useState } from "react";
@@ -40,7 +39,7 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "The human infrastructure for shared living",
       description: "HUB simplifies managing your shared living with kindness. Finances, tasks, calendar and more, all in one app designed for roommates and co-living communities.",
-      cta: "Join the Beta",
+      cta: "Become a Beta Tester",
       betaTesting: "Beta Testing",
       overview: {
         tagline: "Overview",
@@ -119,9 +118,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Be Among the First to Experience HUB",
-        description: "Join our beta program and help shape the future of shared living. Early access for beta testers.",
-        button: "Join the Beta"
+        title: "Be part of the journey",
+        description: "Join our beta program and help shape the future of shared living. Your feedback matters.",
+        button: "Become a Beta Tester"
       }
     },
     fr: {
@@ -129,7 +128,7 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "L'infrastructure humaine de la vie partagée",
       description: "HUB simplifie la gestion de votre colocation avec bienveillance. Finances, tâches, calendrier et plus encore, dans une seule application conçue pour les colocataires et les communautés de vie partagée.",
-      cta: "Rejoindre la bêta",
+      cta: "Devenez testeur",
       betaTesting: "Test bêta",
       overview: {
         tagline: "Aperçu",
@@ -208,9 +207,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Soyez parmi les premiers à découvrir HUB",
-        description: "Rejoignez notre programme bêta et aidez à façonner l'avenir de la vie partagée. Accès prioritaire pour les testeurs bêta.",
-        button: "Rejoindre la bêta"
+        title: "Faites partie de l'aventure",
+        description: "Rejoignez notre programme bêta et aidez à façonner l'avenir de la vie partagée. Votre avis compte.",
+        button: "Devenez testeur"
       }
     }
   };
@@ -220,10 +219,10 @@ export default function ProductHub() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero - Light Mode */}
-      <section className="pt-16 pb-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-sm font-medium mb-6">
               <Bell className="w-4 h-4" />
               {t.betaTesting}
             </div>
@@ -255,7 +254,7 @@ export default function ProductHub() {
       </section>
 
       {/* Overview */}
-      <section className="py-20 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-3">
@@ -275,7 +274,7 @@ export default function ProductHub() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
             {t.features.title}
@@ -302,7 +301,7 @@ export default function ProductHub() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
             {t.values.title}
@@ -326,13 +325,13 @@ export default function ProductHub() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-16 lg:py-20 bg-slate-900">
         <div className="container">
           <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               {t.ctaSection.title}
             </h2>
-            <p className="text-slate-600 text-lg mb-8">
+            <p className="text-slate-300 text-lg mb-8">
               {t.ctaSection.description}
             </p>
             <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>

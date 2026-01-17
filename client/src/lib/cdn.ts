@@ -177,20 +177,31 @@ export const CDN = {
   }
 };
 
-// Product accent colors
+// Product accent colors (from Brand Bible)
 export const PRODUCT_COLORS = {
-  halo: '#EF4444',
-  hub: '#10B981',
-  nest: '#F59E0B',
-  seed: '#14B8A6',
-  vault: '#475569',
-  link: '#06B6D4',
-  gate: '#EAB308',
-  forge: '#F97316',
-  lens: '#7A3AD7',
-  atlas: '#3B82F6',
-  one: '#0EA5E9',
-  studio: '#9B8AFB',
+  // Identity
+  halo: '#EF4444',      // Red - Identity management
+  // Core Products
+  hub: '#10B981',       // Emerald - Shared living (BETA)
+  atlas: '#3B82F6',     // Blue - Investor portal
+  studio: '#9B8AFB',    // Violet - Strategic consulting
+  // Platform Products
+  forge: '#F97316',     // Orange - Development platform
+  gate: '#EAB308',      // Yellow - Access management
+  lens: '#7A3AD7',      // Purple - Analytics platform
+  link: '#06B6D4',      // Cyan - Integration platform
+  // Community Products
+  nest: '#F59E0B',      // Amber - Community platform
+  seed: '#14B8A6',      // Teal - Incubation platform
+  // Storage
+  vault: '#475569',     // Slate - Secure storage
+} as const;
+
+// Foundation colors
+export const BRAND_COLORS = {
+  navy: '#172638',
+  black: '#000000',
+  white: '#FFFFFF',
 } as const;
 
 export default CDN;

@@ -1,46 +1,52 @@
-# KOLIVO™ Website - Liquid Glass Redesign
+# KOLIVO™ Website - Institutional Redesign
+
+## BRAND ALIGNMENT (CRITICAL - FROM BIBLE)
+- [ ] Remove GUARDO completely
+- [ ] Remove PARTENARIO completely  
+- [ ] Rename Studio+ to KOLIVO™ Lens
+- [ ] Use official product colors from brand bible
+- [ ] Update all product references to official brand names
+
+## Official Products (from Brand Bible):
+- KOLIVO™ HALO (Red #EF4444) - Identity
+- KOLIVO™ Atlas (Blue #3b82f6) - Investor portal
+- KOLIVO™ HUB (Emerald #10b981) - Shared living - BETA TESTING
+- KOLIVO™ Studio (Violet #9b8afb) - Strategic consulting
+- KOLIVO™ Forge (Orange #f97316) - Development platform
+- KOLIVO™ Gate (Yellow #eab308) - Access management
+- KOLIVO™ Lens (Purple #7a3ad7) - Analytics platform
+- KOLIVO™ Link (Cyan #06b6d4) - Integration platform
+- KOLIVO™ Nest (Amber #f59e0b) - Community platform
+- KOLIVO™ Seed (Teal #14b8a6) - Incubation platform
+- KOLIVO™ Vault (Slate #475569) - Secure storage
 
 ## Phase 1: Design System
-- [x] Create Liquid Glass CSS system (glassmorphism, blur, gradients)
-- [x] Refactor to institutional/corporate style (remove AI template look)
-- [ ] Switch to light mode (white/gray backgrounds)
-- [ ] Reduce border radius (8-12px, not 24px+)
-- [x] Add substantial content (not placeholder text)
-- [x] Fix white line between header and hero
-- [x] Remove fake stats section
-- [x] Hub status: Beta Testing (not Available)
-- [x] Remove false certifications (PIPEDA, SOC 2, etc.)
-- [x] Improve color contrast for readability
-- [x] Fix Hub product page (line + text contrast)
-- [ ] Update color palette for glass effects
-- [ ] Configure typography with KOLIVO Neo Sans from CDN
-- [ ] Create reusable glass components
+- [x] Create institutional CSS system
+- [x] Light mode (white/gray backgrounds)
+- [x] Add substantial content
+- [x] Fix Hub product page
+- [ ] Fix margin/padding between header and hero (ALL pages)
+- [ ] Beta Testing badge: Orange pale (not yellow/green)
+- [ ] All Hero sections like Hub page (slate-50 bg)
+- [ ] Navy sections: white text
+- [ ] CTA: "Devenez testeur" / "Become a beta tester"
+- [ ] Integrate beta signup form
 
 ## Phase 2: kolivo.ca Pages
-- [ ] Home page - Liquid Glass hero
-- [ ] Products overview
-- [ ] HUB product page
-- [ ] Studio+ product page
-- [ ] GUARDO product page
-- [ ] PARTENARIO product page
+- [ ] Home page - Updated with official products
+- [ ] Products overview - Official products only
+- [ ] HUB product page (Beta Testing)
+- [ ] HALO product page
+- [ ] Lens product page (ex-Studio+)
+- [ ] Nest product page
+- [ ] Seed product page
 - [ ] Solutions pages (B2B, Enterprise, Impact, Public Sector)
 - [ ] Security & Trust page
 - [ ] Company/About page
-- [ ] Careers page
 - [ ] Contact page
 - [ ] Legal pages (Privacy, Terms, Cookies)
-- [ ] Header/Navigation - Glass effect
-- [ ] Footer
 
-## Phase 3: corporate.kolivo.ca
-- [ ] Corporate home page
-- [ ] Governance page
-- [ ] Leadership page
-- [ ] Investor relations
-- [ ] Legal/Compliance
-
-## Phase 4: Deployment
-- [ ] Connect to Vercel
-- [ ] Configure custom domains
-- [ ] SSL certificates
+## Phase 3: Deployment
+- [ ] Push to GitHub
+- [ ] Vercel auto-deploy
 - [ ] Test all pages
