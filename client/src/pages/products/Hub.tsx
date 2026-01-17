@@ -1,10 +1,7 @@
 /**
  * HUB by KOLIVO™ Product Page
- * Design: Swiss Corporate Modernism
- * Bilingual support (FR/EN)
- * 
- * HUB is a shared living management platform (roommate/colocation app)
- * CTA: Waitlist signup with CAI-compliant consent
+ * Style: Institutional Light Mode
+ * FIXED: Better contrast, no dark hero with unreadable text
  */
 
 import { useState } from "react";
@@ -43,8 +40,8 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "The human infrastructure for shared living",
       description: "HUB simplifies managing your shared living with kindness. Finances, tasks, calendar and more, all in one app designed for roommates and co-living communities.",
-      cta: "Get Notified at Launch",
-      comingSoon: "Coming Soon",
+      cta: "Join the Beta",
+      betaTesting: "Beta Testing",
       overview: {
         tagline: "Overview",
         title: "Everything You Need for Harmonious Shared Living",
@@ -122,9 +119,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Be the First to Experience HUB",
-        description: "Join our waitlist and be notified as soon as HUB by KOLIVO™ launches. Early access for waitlist members.",
-        button: "Join the Waitlist"
+        title: "Be Among the First to Experience HUB",
+        description: "Join our beta program and help shape the future of shared living. Early access for beta testers.",
+        button: "Join the Beta"
       }
     },
     fr: {
@@ -132,8 +129,8 @@ export default function ProductHub() {
       title: "HUB by KOLIVO™",
       subtitle: "L'infrastructure humaine de la vie partagée",
       description: "HUB simplifie la gestion de votre colocation avec bienveillance. Finances, tâches, calendrier et plus encore, dans une seule application conçue pour les colocataires et les communautés de vie partagée.",
-      cta: "Être notifié au lancement",
-      comingSoon: "Bientôt disponible",
+      cta: "Rejoindre la bêta",
+      betaTesting: "Test bêta",
       overview: {
         tagline: "Aperçu",
         title: "Tout ce dont vous avez besoin pour une colocation harmonieuse",
@@ -211,9 +208,9 @@ export default function ProductHub() {
         ]
       },
       ctaSection: {
-        title: "Soyez les premiers à découvrir HUB",
-        description: "Rejoignez notre liste d'attente et soyez notifié dès le lancement de HUB by KOLIVO™. Accès prioritaire pour les membres de la liste d'attente.",
-        button: "Rejoindre la liste d'attente"
+        title: "Soyez parmi les premiers à découvrir HUB",
+        description: "Rejoignez notre programme bêta et aidez à façonner l'avenir de la vie partagée. Accès prioritaire pour les testeurs bêta.",
+        button: "Rejoindre la bêta"
       }
     }
   };
@@ -221,32 +218,30 @@ export default function ProductHub() {
   const t = content[language];
 
   return (
-    <div className="min-h-screen">
-      {/* Hero */}
-      <section className="py-20 lg:py-32 bg-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <img src="/images/platform-hub.png" alt="" className="w-full h-full object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a2332] via-[#1a2332]/80 to-transparent" />
-        <div className="container relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-6">
+    <div className="min-h-screen bg-white">
+      {/* Hero - Light Mode */}
+      <section className="pt-16 pb-20 bg-slate-50">
+        <div className="container">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-sm font-medium mb-6">
               <Bell className="w-4 h-4" />
-              {t.comingSoon}
+              {t.betaTesting}
             </div>
-            <p className="section-number mb-4">{t.tagline}</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-3">
+              {t.tagline}
+            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
               {t.title}
             </h1>
-            <p className="text-2xl text-primary font-medium mb-6">
+            <p className="text-xl text-emerald-600 font-medium mb-6">
               {t.subtitle}
             </p>
-            <p className="text-xl text-white/70 leading-relaxed mb-8">
+            <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">
               {t.description}
             </p>
             <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg">
                   {t.cta}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -260,17 +255,19 @@ export default function ProductHub() {
       </section>
 
       {/* Overview */}
-      <section className="py-20 lg:py-32 bg-background">
+      <section className="py-20 bg-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <p className="section-number mb-4">{t.overview.tagline}</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 mb-3">
+              {t.overview.tagline}
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
               {t.overview.title}
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+            <p className="text-slate-600 leading-relaxed mb-4">
               {t.overview.description1}
             </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-slate-600 leading-relaxed">
               {t.overview.description2}
             </p>
           </div>
@@ -278,24 +275,24 @@ export default function ProductHub() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 lg:py-32 bg-muted/30">
+      <section className="py-20 bg-slate-50">
         <div className="container">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
             {t.features.title}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.features.items.map((feature, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-xl p-6 shadow-sm border border-border/50 hover:shadow-md hover:border-primary/20 transition-all"
+                className="bg-white border border-slate-200 rounded-lg p-6 hover:border-slate-300 transition-colors"
               >
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-primary" />
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center mb-4">
+                  <feature.icon className="w-5 h-5 text-emerald-600" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {feature.desc}
                 </p>
               </div>
@@ -305,21 +302,21 @@ export default function ProductHub() {
       </section>
 
       {/* Values */}
-      <section className="py-20 lg:py-32 bg-background">
+      <section className="py-20 bg-white">
         <div className="container">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
             {t.values.title}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {t.values.items.map((value, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-8 h-8 text-white" />
+                <div className="w-14 h-14 rounded-full bg-emerald-50 flex items-center justify-center mx-auto mb-4">
+                  <value.icon className="w-6 h-6 text-emerald-600" />
                 </div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">
                   {value.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {value.desc}
                 </p>
               </div>
@@ -328,19 +325,19 @@ export default function ProductHub() {
         </div>
       </section>
 
-      {/* CTA with Waitlist Form */}
-      <section className="py-20 lg:py-32 bg-navy text-white">
+      {/* CTA */}
+      <section className="py-20 bg-slate-50">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
               {t.ctaSection.title}
             </h2>
-            <p className="text-lg text-white/70 mb-8">
+            <p className="text-slate-600 text-lg mb-8">
               {t.ctaSection.description}
             </p>
             <Dialog open={isWaitlistOpen} onOpenChange={setIsWaitlistOpen}>
               <DialogTrigger asChild>
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg">
                   {t.ctaSection.button}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -5,7 +5,13 @@
 - [x] Refactor to institutional/corporate style (remove AI template look)
 - [ ] Switch to light mode (white/gray backgrounds)
 - [ ] Reduce border radius (8-12px, not 24px+)
-- [ ] Add substantial content (not placeholder text)
+- [x] Add substantial content (not placeholder text)
+- [x] Fix white line between header and hero
+- [x] Remove fake stats section
+- [x] Hub status: Beta Testing (not Available)
+- [x] Remove false certifications (PIPEDA, SOC 2, etc.)
+- [x] Improve color contrast for readability
+- [x] Fix Hub product page (line + text contrast)
 - [ ] Update color palette for glass effects
 - [ ] Configure typography with KOLIVO Neo Sans from CDN
 - [ ] Create reusable glass components

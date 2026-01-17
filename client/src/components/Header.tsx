@@ -1,6 +1,7 @@
 /**
  * KOLIVO™ Header
  * Style: Institutional Light Mode
+ * FIXED: No white line gap
  */
 
 import { Button } from "@/components/ui/button";
@@ -56,8 +57,8 @@ export default function Header() {
     <>
       <header 
         className={cn(
-          "site-header",
-          scrolled && "scrolled"
+          "sticky top-0 z-50 bg-white border-b border-slate-200",
+          scrolled && "shadow-sm"
         )}
       >
         <div className="container">
@@ -82,8 +83,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "nav-link",
-                    location === link.href && "active"
+                    "px-3 py-2 text-sm font-medium rounded-md transition-colors",
+                    location === link.href 
+                      ? "text-slate-900 bg-slate-100" 
+                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   )}
                 >
                   {link.label}
@@ -95,7 +98,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <LanguageSwitch />
               <Link href="/contact">
-                <Button className="btn btn-primary">
+                <Button className="bg-slate-900 hover:bg-slate-800 text-white text-sm px-4 py-2 rounded-lg">
                   {t.contact}
                 </Button>
               </Link>
@@ -103,7 +106,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 text-foreground-secondary hover:text-foreground rounded"
+              className="lg:hidden p-2 text-slate-600 hover:text-slate-900 rounded"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -127,7 +130,7 @@ export default function Header() {
           />
           
           {/* Menu Content */}
-          <div className="absolute top-16 left-0 right-0 bg-background border-b border-border shadow-lg">
+          <div className="absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg">
             <div className="container py-4">
               <nav className="space-y-1">
                 {navLinks.map((link) => (
@@ -136,10 +139,10 @@ export default function Header() {
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "block px-4 py-3 rounded text-base font-medium transition-colors",
+                      "block px-4 py-3 rounded-md text-base font-medium transition-colors",
                       location === link.href 
-                        ? "bg-background-secondary text-foreground" 
-                        : "text-foreground-secondary hover:text-foreground hover:bg-background-secondary"
+                        ? "bg-slate-100 text-slate-900" 
+                        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                     )}
                   >
                     {link.label}
@@ -147,10 +150,10 @@ export default function Header() {
                 ))}
               </nav>
 
-              <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between">
                 <LanguageSwitch />
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  <Button className="btn btn-primary">
+                  <Button className="bg-slate-900 hover:bg-slate-800 text-white text-sm px-4 py-2 rounded-lg">
                     {t.contact}
                   </Button>
                 </Link>
