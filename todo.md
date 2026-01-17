@@ -67,6 +67,9 @@
 
 
 ## Phase 5: Logo and Badge Fixes
-- [ ] Product pages: Replace header logo with product logo (not add extra logo in hero)
-- [ ] Remove duplicate logo from hero sections
-- [ ] Lens: Change badge from "Coming Soon" to "Book Now" in purple/mauve
+- [x] Product pages: Replace header logo with product logo (not add extra logo in hero)
+- [x] Remove duplicate logo from hero sections
+- [x] Lens: Change badge from "Coming Soon" to "Book Now" in purple/mauve
+
+- [ ] Use standalone product logos (without KOLIVO™ prefix) for consistent size
+- [ ] Product logo click should go to homepage, not stay on product page

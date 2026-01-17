@@ -140,12 +140,12 @@ export default function Header() {
       >
         <div className="container">
           <div className="flex items-center justify-between h-16">
-            {/* Logo - Shows product logo on product pages */}
-            <Link href={productInfo ? location : "/"} className="flex items-center">
+            {/* Logo - Shows product logo on product pages, always links to homepage */}
+            <Link href="/" className="flex items-center">
               <img 
                 src={headerLogo}
                 alt={headerLogoAlt} 
-                className="h-6 w-auto"
+                className="h-5 w-auto"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   // Fallback to main logo
