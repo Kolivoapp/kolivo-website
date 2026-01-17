@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Fingerprint, Shield, Lock, Key, UserCheck, Globe } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { PRODUCT_COLORS } from "@/lib/cdn";
+import { PRODUCT_COLORS, CDN } from "@/lib/cdn";
 
 export default function ProductHalo() {
   const { language } = useLanguage();
@@ -16,7 +16,7 @@ export default function ProductHalo() {
   const content = {
     en: {
       tagline: "Identity",
-      title: "KOLIVO™ HALO",
+      title: "Halo • ID",
       subtitle: "One identity. Every platform.",
       description: "Your secure digital identity that travels with you across the entire KOLIVO™ ecosystem. One login. Complete control over your data. Privacy by design.",
       status: "Available",
@@ -64,7 +64,7 @@ export default function ProductHalo() {
     },
     fr: {
       tagline: "Identité",
-      title: "KOLIVO™ HALO",
+      title: "Halo • ID",
       subtitle: "Une identité. Toutes les plateformes.",
       description: "Votre identité numérique sécurisée qui vous accompagne dans tout l'écosystème KOLIVO™. Une connexion. Contrôle total sur vos données. Confidentialité par conception.",
       status: "Disponible",
@@ -121,6 +121,17 @@ export default function ProductHalo() {
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Product Logo */}
+            <div className="flex justify-center mb-6">
+              <img 
+                src={CDN.products.halo.accent}
+                alt="Halo • ID"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
             <div 
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6"
               style={{ backgroundColor: `${accentColor}15`, color: accentColor }}

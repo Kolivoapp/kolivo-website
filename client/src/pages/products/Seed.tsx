@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sprout, Lightbulb, Users, Target, Rocket, HandHeart } from "lucide-react";
 import { Link } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { PRODUCT_COLORS } from "@/lib/cdn";
+import { PRODUCT_COLORS, CDN } from "@/lib/cdn";
 
 export default function ProductSeed() {
   const { language } = useLanguage();
@@ -121,6 +121,17 @@ export default function ProductSeed() {
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Product Logo */}
+            <div className="flex justify-center mb-6">
+              <img 
+                src={CDN.products.seed.accent}
+                alt="KOLIVO™ Seed"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
             <div 
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-6"
               style={{ backgroundColor: `${accentColor}15`, color: accentColor }}

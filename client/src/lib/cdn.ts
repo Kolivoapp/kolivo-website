@@ -13,6 +13,8 @@ export const CDN = {
       navy: `${CDN_BASE}/01_MASTERS/wordmark/tm/kolivo-wordmark-navy-tm.svg`,
       white: `${CDN_BASE}/01_MASTERS/wordmark/tm/kolivo-wordmark-white-tm.svg`,
       black: `${CDN_BASE}/01_MASTERS/wordmark/tm/kolivo-wordmark-black-tm.svg`,
+      accent: `${CDN_BASE}/01_MASTERS/wordmark/tm/kolivo-wordmark-tm-accent.svg`,
+      dark: `${CDN_BASE}/01_MASTERS/wordmark/tm/kolivo-wordmark-navy-tm.svg`,
     },
     // Wordmark without TM
     wordmarkNoTm: {

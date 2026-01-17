@@ -28,6 +28,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { CDN } from "@/lib/cdn";
 
 export default function ProductHub() {
   const { language } = useLanguage();
@@ -36,7 +37,7 @@ export default function ProductHub() {
   const content = {
     en: {
       tagline: "Product",
-      title: "HUB by KOLIVO™",
+      title: "KOLIVO™ Hub",
       subtitle: "The human infrastructure for shared living",
       description: "HUB simplifies managing your shared living with kindness. Finances, tasks, calendar and more, all in one app designed for roommates and co-living communities.",
       cta: "Become a Beta Tester",
@@ -125,7 +126,7 @@ export default function ProductHub() {
     },
     fr: {
       tagline: "Produit",
-      title: "HUB by KOLIVO™",
+      title: "KOLIVO™ Hub",
       subtitle: "L'infrastructure humaine de la vie partagée",
       description: "HUB simplifie la gestion de votre colocation avec bienveillance. Finances, tâches, calendrier et plus encore, dans une seule application conçue pour les colocataires et les communautés de vie partagée.",
       cta: "Devenez testeur",
@@ -222,6 +223,17 @@ export default function ProductHub() {
       <section className="py-16 lg:py-20 bg-slate-50">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Product Logo */}
+            <div className="flex justify-center mb-6">
+              <img 
+                src={CDN.products.hub.accent}
+                alt="KOLIVO™ Hub"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = 'none';
+                }}
+              />
+            </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-sm font-medium mb-6">
               <Bell className="w-4 h-4" />
               {t.betaTesting}

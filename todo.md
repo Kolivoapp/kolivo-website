@@ -52,3 +52,15 @@
 - [ ] Push to GitHub
 - [ ] Vercel auto-deploy
 - [ ] Test all pages
+
+
+## Phase 4: Final Corrections (User Feedback)
+- [ ] Lens: CTA "Book a consultation" + dedicated contact form
+- [ ] All products: "Get notified" -> dedicated form per product
+- [ ] Contact page: Remove "Location" line, add full address under Corporate
+- [ ] Contact page: Add phone number 1 (844) 565-4861
+- [ ] Add missing products: Forge, Link, Atlas, Vault, Gate, Studio
+- [ ] Add product logos on each product page
+- [ ] Fix naming: KOLIVO™ [Name] everywhere, except "Halo • ID"
+- [ ] Press page: Fix logo (use kolivo-wordmark-tm-accent)
+- [ ] Press page: Fix download assets button

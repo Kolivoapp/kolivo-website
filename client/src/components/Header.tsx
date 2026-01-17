@@ -1,13 +1,13 @@
 /**
  * KOLIVO™ Header
  * Style: Institutional Light Mode
- * FIXED: No white line gap
+ * All official products included
  */
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CDN, PRODUCT_COLORS } from "@/lib/cdn";
-import { Menu, X, ChevronDown, Users, Shield, Eye, Home, Sprout } from "lucide-react";
+import { Menu, X, ChevronDown, Users, Shield, Eye, Home, Sprout, Code, KeyRound, Link2, TrendingUp, Lock, Lightbulb } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -46,12 +46,23 @@ export default function Header() {
       security: "Security",
       company: "About",
       contact: "Contact",
+      coreProducts: "Core Products",
+      platformProducts: "Platform & Infrastructure",
       productsList: [
-        { name: "Hub", desc: "Shared living management", href: "/products/hub", icon: Users, color: PRODUCT_COLORS.hub, status: "Beta" },
-        { name: "Halo", desc: "Digital identity", href: "/products/halo", icon: Shield, color: PRODUCT_COLORS.halo, status: "Available" },
-        { name: "Nest", desc: "Property management", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027" },
-        { name: "Seed", desc: "Community incubator", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev" },
-        { name: "Lens", desc: "Analytics platform", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Soon" },
+        // Core Products
+        { name: "KOLIVO™ Hub", desc: "Shared living management", href: "/products/hub", icon: Users, color: PRODUCT_COLORS.hub, status: "Beta", category: "core" },
+        { name: "Halo • ID", desc: "Digital identity", href: "/products/halo", icon: Shield, color: PRODUCT_COLORS.halo, status: "Available", category: "core" },
+        { name: "KOLIVO™ Nest", desc: "Property management", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027", category: "core" },
+        { name: "KOLIVO™ Seed", desc: "Community incubator", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev", category: "core" },
+        // Platform Products
+        { name: "KOLIVO™ Lens", desc: "Business optimization", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Soon", category: "platform" },
+        { name: "KOLIVO™ Atlas", desc: "Investor portal", href: "/products/atlas", icon: TrendingUp, color: PRODUCT_COLORS.atlas, status: "Soon", category: "platform" },
+        { name: "KOLIVO™ Studio", desc: "Strategic consulting", href: "/products/studio", icon: Lightbulb, color: PRODUCT_COLORS.studio, status: "Invite", category: "platform" },
+        // Infrastructure (hidden from main nav, accessible via direct link)
+        { name: "KOLIVO™ Forge", desc: "Development platform", href: "/products/forge", icon: Code, color: PRODUCT_COLORS.forge, status: "Internal", category: "infra" },
+        { name: "KOLIVO™ Gate", desc: "Access management", href: "/products/gate", icon: KeyRound, color: PRODUCT_COLORS.gate, status: "Dev", category: "infra" },
+        { name: "KOLIVO™ Link", desc: "Integration platform", href: "/products/link", icon: Link2, color: PRODUCT_COLORS.link, status: "Dev", category: "infra" },
+        { name: "KOLIVO™ Vault", desc: "Secure storage", href: "/products/vault", icon: Lock, color: PRODUCT_COLORS.vault, status: "Dev", category: "infra" },
       ]
     },
     fr: {
@@ -60,17 +71,33 @@ export default function Header() {
       security: "Sécurité",
       company: "À propos",
       contact: "Contact",
+      coreProducts: "Produits principaux",
+      platformProducts: "Plateforme & Infrastructure",
       productsList: [
-        { name: "Hub", desc: "Gestion de colocation", href: "/products/hub", icon: Users, color: PRODUCT_COLORS.hub, status: "Bêta" },
-        { name: "Halo", desc: "Identité numérique", href: "/products/halo", icon: Shield, color: PRODUCT_COLORS.halo, status: "Dispo" },
-        { name: "Nest", desc: "Gestion immobilière", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027" },
-        { name: "Seed", desc: "Incubateur communautaire", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev" },
-        { name: "Lens", desc: "Plateforme analytique", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Bientôt" },
+        // Core Products
+        { name: "KOLIVO™ Hub", desc: "Gestion de colocation", href: "/products/hub", icon: Users, color: PRODUCT_COLORS.hub, status: "Bêta", category: "core" },
+        { name: "Halo • ID", desc: "Identité numérique", href: "/products/halo", icon: Shield, color: PRODUCT_COLORS.halo, status: "Dispo", category: "core" },
+        { name: "KOLIVO™ Nest", desc: "Gestion immobilière", href: "/products/nest", icon: Home, color: PRODUCT_COLORS.nest, status: "2027", category: "core" },
+        { name: "KOLIVO™ Seed", desc: "Incubateur communautaire", href: "/products/seed", icon: Sprout, color: PRODUCT_COLORS.seed, status: "Dev", category: "core" },
+        // Platform Products
+        { name: "KOLIVO™ Lens", desc: "Optimisation d'affaires", href: "/products/lens", icon: Eye, color: PRODUCT_COLORS.lens, status: "Bientôt", category: "platform" },
+        { name: "KOLIVO™ Atlas", desc: "Portail investisseur", href: "/products/atlas", icon: TrendingUp, color: PRODUCT_COLORS.atlas, status: "Bientôt", category: "platform" },
+        { name: "KOLIVO™ Studio", desc: "Conseil stratégique", href: "/products/studio", icon: Lightbulb, color: PRODUCT_COLORS.studio, status: "Invitation", category: "platform" },
+        // Infrastructure
+        { name: "KOLIVO™ Forge", desc: "Plateforme de développement", href: "/products/forge", icon: Code, color: PRODUCT_COLORS.forge, status: "Interne", category: "infra" },
+        { name: "KOLIVO™ Gate", desc: "Gestion des accès", href: "/products/gate", icon: KeyRound, color: PRODUCT_COLORS.gate, status: "Dev", category: "infra" },
+        { name: "KOLIVO™ Link", desc: "Plateforme d'intégration", href: "/products/link", icon: Link2, color: PRODUCT_COLORS.link, status: "Dev", category: "infra" },
+        { name: "KOLIVO™ Vault", desc: "Stockage sécurisé", href: "/products/vault", icon: Lock, color: PRODUCT_COLORS.vault, status: "Dev", category: "infra" },
       ]
     }
   };
 
   const t = content[language];
+  
+  // Filter products for navigation (exclude internal infra)
+  const navProducts = t.productsList.filter(p => p.category !== 'infra');
+  const coreProducts = t.productsList.filter(p => p.category === 'core');
+  const platformProducts = t.productsList.filter(p => p.category === 'platform');
 
   const navLinks = [
     { label: t.solutions, href: "/solutions/coliving" },
@@ -119,8 +146,41 @@ export default function Header() {
                 </button>
 
                 {productsOpen && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-slate-200 rounded-lg shadow-lg py-2">
-                    {t.productsList.map((product) => (
+                  <div className="absolute top-full left-0 mt-1 w-80 bg-white border border-slate-200 rounded-lg shadow-lg py-2">
+                    {/* Core Products */}
+                    <div className="px-4 py-2">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">{t.coreProducts}</p>
+                    </div>
+                    {coreProducts.map((product) => (
+                      <Link
+                        key={product.href}
+                        href={product.href}
+                        onClick={() => setProductsOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2 hover:bg-slate-50 transition-colors"
+                      >
+                        <div 
+                          className="w-8 h-8 rounded-md flex items-center justify-center"
+                          style={{ backgroundColor: `${product.color}15` }}
+                        >
+                          <product.icon className="w-4 h-4" style={{ color: product.color }} />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-medium text-slate-900">{product.name}</span>
+                            <span className="text-xs px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
+                              {product.status}
+                            </span>
+                          </div>
+                          <span className="text-xs text-slate-500">{product.desc}</span>
+                        </div>
+                      </Link>
+                    ))}
+                    
+                    {/* Platform Products */}
+                    <div className="px-4 py-2 mt-2 border-t border-slate-100">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">{t.platformProducts}</p>
+                    </div>
+                    {platformProducts.map((product) => (
                       <Link
                         key={product.href}
                         href={product.href}
@@ -202,13 +262,46 @@ export default function Header() {
           {/* Menu Content */}
           <div className="absolute top-16 left-0 right-0 bg-white border-b border-slate-200 shadow-lg max-h-[80vh] overflow-y-auto">
             <div className="container py-4">
-              {/* Products Section */}
+              {/* Core Products Section */}
               <div className="mb-4">
                 <p className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  {t.products}
+                  {t.coreProducts}
                 </p>
                 <nav className="space-y-1">
-                  {t.productsList.map((product) => (
+                  {coreProducts.map((product) => (
+                    <Link 
+                      key={product.href}
+                      href={product.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-slate-50 transition-colors"
+                    >
+                      <div 
+                        className="w-8 h-8 rounded-md flex items-center justify-center"
+                        style={{ backgroundColor: `${product.color}15` }}
+                      >
+                        <product.icon className="w-4 h-4" style={{ color: product.color }} />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium text-slate-900">{product.name}</span>
+                          <span className="text-xs px-1.5 py-0.5 rounded bg-slate-100 text-slate-500">
+                            {product.status}
+                          </span>
+                        </div>
+                        <span className="text-xs text-slate-500">{product.desc}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              {/* Platform Products Section */}
+              <div className="mb-4 pt-4 border-t border-slate-200">
+                <p className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  {t.platformProducts}
+                </p>
+                <nav className="space-y-1">
+                  {platformProducts.map((product) => (
                     <Link 
                       key={product.href}
                       href={product.href}

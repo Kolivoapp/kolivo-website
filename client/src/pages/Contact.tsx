@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, MapPin, Building2 } from "lucide-react";
+import { Mail, Building2, Phone } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -49,9 +49,9 @@ export default function Contact() {
         title: "Other ways to reach us",
         email: "Email",
         emailDesc: "For general inquiries",
-        corporate: "Corporate",
-        location: "Location",
-        locationValue: "Montréal, Québec, Canada"
+        phone: "Phone",
+        phoneDesc: "Monday to Friday, 9am - 5pm ET",
+        corporate: "Corporate Headquarters"
       },
       expectations: {
         title: "What to expect",
@@ -90,9 +90,9 @@ export default function Contact() {
         title: "Autres façons de nous joindre",
         email: "Courriel",
         emailDesc: "Pour les demandes générales",
-        corporate: "Siège social",
-        location: "Emplacement",
-        locationValue: "Montréal, Québec, Canada"
+        phone: "Téléphone",
+        phoneDesc: "Lundi au vendredi, 9h - 17h HE",
+        corporate: "Siège social"
       },
       expectations: {
         title: "À quoi s'attendre",
@@ -232,6 +232,7 @@ export default function Contact() {
               </h2>
               
               <div className="space-y-6">
+                {/* Email */}
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-emerald-600" />
@@ -245,6 +246,21 @@ export default function Contact() {
                   </div>
                 </div>
 
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-emerald-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900 mb-1">{t.info.phone}</h3>
+                    <p className="text-slate-600 text-sm mb-1">{t.info.phoneDesc}</p>
+                    <a href="tel:+18445654861" className="text-emerald-600 hover:underline">
+                      1 (844) 565-4861
+                    </a>
+                  </div>
+                </div>
+
+                {/* Corporate Address */}
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <Building2 className="w-5 h-5 text-emerald-600" />
@@ -253,18 +269,12 @@ export default function Contact() {
                     <h3 className="font-semibold text-slate-900 mb-1">{t.info.corporate}</h3>
                     <p className="text-slate-600 text-sm">
                       KOLIVO™ Technologies Inc.<br />
+                      Tour de la Bourse - Place Victoria<br />
+                      800, rue du Square-Victoria<br />
+                      Suite 2624<br />
+                      Montréal (Québec) H3C 0B4<br />
                       Canada
                     </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-emerald-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900 mb-1">{t.info.location}</h3>
-                    <p className="text-slate-600 text-sm">{t.info.locationValue}</p>
                   </div>
                 </div>
               </div>

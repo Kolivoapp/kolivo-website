@@ -130,9 +130,13 @@ export default function Press() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="p-8 bg-white rounded-lg border border-slate-200 flex items-center justify-center">
                 <img 
-                  src={CDN.logos.wordmark.dark}
-                  alt="KOLIVO™ Logo Dark"
+                  src={CDN.logos.wordmark.accent}
+                  alt="KOLIVO™ Logo"
                   className="h-8 w-auto"
+                  onError={(e) => {
+                    // Fallback to navy if accent doesn't exist
+                    (e.target as HTMLImageElement).src = CDN.logos.wordmark.navy;
+                  }}
                 />
               </div>
               <div className="p-8 bg-slate-900 rounded-lg flex items-center justify-center">
@@ -145,9 +149,19 @@ export default function Press() {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg">
-                <Download className="w-4 h-4 mr-2" />
-                {t.assets.download}
+              <Button 
+                asChild
+                className="bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg"
+              >
+                <a 
+                  href="https://cdn.groupekolivo.com/01_MASTERS/KOLIVO_Brand_Kit.zip" 
+                  download="KOLIVO_Brand_Kit.zip"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  {t.assets.download}
+                </a>
               </Button>
             </div>
           </div>

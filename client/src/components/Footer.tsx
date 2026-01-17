@@ -19,10 +19,10 @@ export default function Footer() {
       company: "Company",
       legal: "Legal",
       resources: "Resources",
-      hub: "Hub by KOLIVO™",
-      nest: "Nest by KOLIVO™",
-      seed: "Seed by KOLIVO™",
-      halo: "Halo by KOLIVO™",
+      hub: "KOLIVO™ Hub",
+      nest: "KOLIVO™ Nest",
+      seed: "KOLIVO™ Seed",
+      halo: "Halo • ID",
       about: "About Us",
       careers: "Careers",
       press: "Press",
@@ -46,10 +46,10 @@ export default function Footer() {
       company: "Entreprise",
       legal: "Légal",
       resources: "Ressources",
-      hub: "Hub by KOLIVO™",
-      nest: "Nest by KOLIVO™",
-      seed: "Seed by KOLIVO™",
-      halo: "Halo by KOLIVO™",
+      hub: "KOLIVO™ Hub",
+      nest: "KOLIVO™ Nest",
+      seed: "KOLIVO™ Seed",
+      halo: "Halo • ID",
       about: "À propos",
       careers: "Carrières",
       press: "Presse",
@@ -102,6 +102,14 @@ export default function Footer() {
                   <p>Montréal (Québec) H3C 0B4</p>
                 </div>
               </div>
+              <a 
+                href="tel:+18445654861"
+                className="flex items-center gap-3 hover:text-white transition-colors"
+                style={{ color: 'rgba(255,255,255,0.6)' }}
+              >
+                <Phone className="w-4 h-4" />
+                1 (844) 565-4861
+              </a>
               <a 
                 href="mailto:contact@kolivo.ca"
                 className="flex items-center gap-3 hover:text-white transition-colors"

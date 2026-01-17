@@ -15,6 +15,12 @@ import ProductHalo from "./pages/products/Halo";
 import ProductLens from "./pages/products/Lens";
 import ProductNest from "./pages/products/Nest";
 import ProductSeed from "./pages/products/Seed";
+import ProductForge from "./pages/products/Forge";
+import ProductGate from "./pages/products/Gate";
+import ProductLink from "./pages/products/Link";
+import ProductAtlas from "./pages/products/Atlas";
+import ProductVault from "./pages/products/Vault";
+import ProductStudio from "./pages/products/Studio";
 // Solutions
 import SolutionB2B from "./pages/solutions/B2B";
 import SolutionEnterprise from "./pages/solutions/Enterprise";
@@ -43,6 +49,12 @@ function Router() {
       <Route path="/products/lens" component={ProductLens} />
       <Route path="/products/nest" component={ProductNest} />
       <Route path="/products/seed" component={ProductSeed} />
+      <Route path="/products/forge" component={ProductForge} />
+      <Route path="/products/gate" component={ProductGate} />
+      <Route path="/products/link" component={ProductLink} />
+      <Route path="/products/atlas" component={ProductAtlas} />
+      <Route path="/products/vault" component={ProductVault} />
+      <Route path="/products/studio" component={ProductStudio} />
       {/* Solutions */}
       <Route path="/solutions/coliving" component={SolutionColiving} />
       <Route path="/solutions/b2b" component={SolutionB2B} />

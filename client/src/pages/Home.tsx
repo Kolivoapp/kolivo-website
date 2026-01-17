@@ -86,7 +86,7 @@ export default function Home() {
         products: [
           {
             name: "Hub",
-            fullName: "Hub by KOLIVO™",
+            fullName: "KOLIVO™ Hub",
             description: "The core application for roommates. Manage expenses, tasks, schedules, and communication in one place. Currently in beta testing.",
             color: PRODUCT_COLORS.hub,
             icon: Users,
@@ -96,7 +96,7 @@ export default function Home() {
           },
           {
             name: "Nest",
-            fullName: "Nest by KOLIVO™",
+            fullName: "KOLIVO™ Nest",
             description: "Property management for shared residences. Designed for landlords and property managers who rent to multiple tenants.",
             color: PRODUCT_COLORS.nest,
             icon: Building2,
@@ -106,7 +106,7 @@ export default function Home() {
           },
           {
             name: "Seed",
-            fullName: "Seed by KOLIVO™",
+            fullName: "KOLIVO™ Seed",
             description: "Community project incubator supporting social housing initiatives, cooperative living projects, and community development.",
             color: PRODUCT_COLORS.seed,
             icon: Leaf,
@@ -116,7 +116,7 @@ export default function Home() {
           },
           {
             name: "Halo",
-            fullName: "Halo by KOLIVO™",
+            fullName: "Halo • ID",
             description: "Secure digital identity for the KOLIVO™ ecosystem. One account across all platforms with privacy-first design.",
             color: PRODUCT_COLORS.halo,
             icon: Shield,
@@ -199,7 +199,7 @@ export default function Home() {
         products: [
           {
             name: "Hub",
-            fullName: "Hub by KOLIVO™",
+            fullName: "KOLIVO™ Hub",
             description: "L'application principale pour les colocataires. Gérez dépenses, tâches, horaires et communication en un seul endroit. Actuellement en test bêta.",
             color: PRODUCT_COLORS.hub,
             icon: Users,
@@ -209,7 +209,7 @@ export default function Home() {
           },
           {
             name: "Nest",
-            fullName: "Nest by KOLIVO™",
+            fullName: "KOLIVO™ Nest",
             description: "Gestion immobilière pour résidences partagées. Conçu pour les propriétaires et gestionnaires qui louent à plusieurs locataires.",
             color: PRODUCT_COLORS.nest,
             icon: Building2,
@@ -219,7 +219,7 @@ export default function Home() {
           },
           {
             name: "Seed",
-            fullName: "Seed by KOLIVO™",
+            fullName: "KOLIVO™ Seed",
             description: "Incubateur de projets communautaires soutenant les initiatives de logement social, les projets de vie coopérative et le développement communautaire.",
             color: PRODUCT_COLORS.seed,
             icon: Leaf,
@@ -229,7 +229,7 @@ export default function Home() {
           },
           {
             name: "Halo",
-            fullName: "Halo by KOLIVO™",
+            fullName: "Halo • ID",
             description: "Identité numérique sécurisée pour l'écosystème KOLIVO™. Un compte pour toutes les plateformes avec une conception axée sur la confidentialité.",
             color: PRODUCT_COLORS.halo,
             icon: Shield,
