@@ -1,12 +1,12 @@
 /**
  * KOLIVO™ Header
- * Style: Institutional / Corporate
+ * Style: Institutional Light Mode
  */
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CDN } from "@/lib/cdn";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -30,15 +30,15 @@ export default function Header() {
     en: {
       products: "Products",
       solutions: "Solutions",
-      security: "Trust",
-      company: "Company",
+      security: "Security",
+      company: "About",
       contact: "Contact"
     },
     fr: {
       products: "Produits",
       solutions: "Solutions",
-      security: "Confiance",
-      company: "Entreprise",
+      security: "Sécurité",
+      company: "À propos",
       contact: "Contact"
     }
   };
@@ -56,8 +56,8 @@ export default function Header() {
     <>
       <header 
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-200",
-          scrolled ? "nav-header scrolled" : "nav-header"
+          "site-header",
+          scrolled && "scrolled"
         )}
       >
         <div className="container">
@@ -65,7 +65,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <img 
-                src={CDN.logos.wordmark.white}
+                src={CDN.logos.wordmark.navy}
                 alt="KOLIVO™" 
                 className="h-6 w-auto"
                 onError={(e) => {
@@ -73,7 +73,6 @@ export default function Header() {
                   e.currentTarget.style.display = 'none';
                 }}
               />
-              <span className="sr-only">KOLIVO™</span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -96,7 +95,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-3">
               <LanguageSwitch />
               <Link href="/contact">
-                <Button className="btn-primary text-sm">
+                <Button className="btn btn-primary">
                   {t.contact}
                 </Button>
               </Link>
@@ -104,7 +103,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 text-foreground-secondary hover:text-foreground"
+              className="lg:hidden p-2 text-foreground-secondary hover:text-foreground rounded"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -123,44 +122,43 @@ export default function Header() {
         <div className="fixed inset-0 z-40 lg:hidden">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-background/95 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/20"
             onClick={() => setMobileMenuOpen(false)}
           />
           
           {/* Menu Content */}
-          <div className="absolute top-16 left-0 right-0 bg-background-secondary border-b border-border p-4">
-            <nav className="space-y-1">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "block px-4 py-3 rounded-lg text-base font-medium transition-colors",
-                    location === link.href 
-                      ? "bg-background-tertiary text-foreground" 
-                      : "text-foreground-secondary hover:text-foreground hover:bg-background-tertiary"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
+          <div className="absolute top-16 left-0 right-0 bg-background border-b border-border shadow-lg">
+            <div className="container py-4">
+              <nav className="space-y-1">
+                {navLinks.map((link) => (
+                  <Link 
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block px-4 py-3 rounded text-base font-medium transition-colors",
+                      location === link.href 
+                        ? "bg-background-secondary text-foreground" 
+                        : "text-foreground-secondary hover:text-foreground hover:bg-background-secondary"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
 
-            <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
-              <LanguageSwitch />
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="btn-primary text-sm">
-                  {t.contact}
-                </Button>
-              </Link>
+              <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
+                <LanguageSwitch />
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="btn btn-primary">
+                    {t.contact}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       )}
-
-      {/* Spacer for fixed header */}
-      <div className="h-16" />
     </>
   );
 }

@@ -2,7 +2,10 @@
 
 ## Phase 1: Design System
 - [x] Create Liquid Glass CSS system (glassmorphism, blur, gradients)
-- [ ] Refactor to institutional/corporate style (remove AI template look)
+- [x] Refactor to institutional/corporate style (remove AI template look)
+- [ ] Switch to light mode (white/gray backgrounds)
+- [ ] Reduce border radius (8-12px, not 24px+)
+- [ ] Add substantial content (not placeholder text)
 - [ ] Update color palette for glass effects
 - [ ] Configure typography with KOLIVO Neo Sans from CDN
 - [ ] Create reusable glass components
